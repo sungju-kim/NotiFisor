@@ -48,6 +48,12 @@ struct NoticeEditView: View {
                 } header: {
                     Text("하루 중 언제 알려드릴까요?")
                 }
+                
+                Section {
+                    RepeatSectionView()
+                } header: {
+                    Text("반복")
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
