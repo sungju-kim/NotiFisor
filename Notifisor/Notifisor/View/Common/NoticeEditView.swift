@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct NoticeEditView: View {
+    // ViewModel Import 후 변경예정
+    @State var text: String = ""
     var body: some View {
+        NavigationView {
+            Form {
+                TextField("일정을 입력해주세요", text: $text)
+            }
+        }
     }
 }
 
