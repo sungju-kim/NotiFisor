@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoticeEditView: View {
+    @Environment(\.dismiss) private var dismiss
     // ViewModel Import 후 변경예정
     @State var text: String = ""
     @State var per: NumbersOnly = NumbersOnly()
@@ -58,12 +59,12 @@ struct NoticeEditView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel", role: .cancel) {
-
+                        dismiss()
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-
+                        dismiss()
                     }
                 }
             }

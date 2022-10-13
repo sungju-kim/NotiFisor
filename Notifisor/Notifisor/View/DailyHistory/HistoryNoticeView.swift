@@ -18,15 +18,15 @@ struct HistoryNoticeView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 16) {
-                    ForEach(0..<10) { _ in
+                    ForEach(0..<5) { _ in
                         HistoryNoticeCell()
                     }
                 }
                 .padding(.horizontal)
             }
             .background(Color(.systemGray5))
-            .navigationTitle(text)
         }
+        .navigationTitle(text)
     }
 }
 

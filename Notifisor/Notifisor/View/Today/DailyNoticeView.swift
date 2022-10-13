@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct DailyNoticeView: View {
+    @State var showSheet = false
     var body: some View {
         VStack(spacing: 20) {
             HStack {
                 Spacer()
                 
                 Button {
-                    //
+                    showSheet.toggle()
                 } label: {
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(.black)
+                }
+                .sheet(isPresented: $showSheet) {
+                    NoticeEditView()
                 }
             }
             .padding()
