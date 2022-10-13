@@ -2,14 +2,40 @@
 //  DailyNoticeView.swift
 //  Notifisor
 //
-//  Created by dale on 2022/10/13.
+//  Created by YEONGJIN JANG on 2022/10/13.
 //
 
 import SwiftUI
 
 struct DailyNoticeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(spacing: 20) {
+            
+            HStack {
+                Spacer()
+                
+                Button {
+                    //
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.black)
+                }
+            }
+            .padding()
+            ScrollView {
+                VStack(spacing: 30) {
+                    ForEach(0..<10) { _ in
+                        DailyNoticeCell()
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+        .background(Color(.systemGray5))
+
     }
 }
 
