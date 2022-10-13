@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct DayCell: View {
+    let day: Int
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Text(day, format: .number)
+                    .font(.title)
+
+                FulfillmentView(startAngle: 0, endAngle: 270)
+                    .fill(Color.yellow)
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 30, height: 30)
+            }
+        }
     }
 }
 
 struct DayCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayCell()
+        DayCell(day: 1)
     }
 }
