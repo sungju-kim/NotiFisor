@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+enum Repeat: String, CaseIterable {
+    case everyDay
+    case everyWeek
+    case everyMonth
+    case everyMonday
+    case everyTuesday
+    case everyWednesday
+    case everyThursday
+    case everyFriday
+    case everySaturday
+    case everySunday
+}
