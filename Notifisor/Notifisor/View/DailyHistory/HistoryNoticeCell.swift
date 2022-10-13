@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct HistoryNoticeCell: View {
+// TODO: - viewModel import 후 변경 예정
+    let title: String = "💊 약먹기"
+    let resolvedTime: String = "12 : 40"
+    let isResolved: Bool = true
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("\(title)")
+                .font(.title)
+
+            Spacer()
+
+            Text("\(resolvedTime)")
+                .font(.title)
+                .foregroundColor(isResolved ? .blue : .gray)
+        }
+        .padding()
+        .background(.ultraThickMaterial)
+        .background(isResolved ? .yellow : .white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .shadow(radius: 1, x: 5, y: 5)
+
     }
 }
 
