@@ -11,6 +11,11 @@
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
 		6C316A2428F6956F006A7473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C316A2328F6956F006A7473 /* Assets.xcassets */; };
 		6C316A2728F6956F006A7473 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C316A2628F6956F006A7473 /* Preview Assets.xcassets */; };
+		6CA163DF28F7A89F00E018F4 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */; };
+		6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E028F7A8B200E018F4 /* DayCell.swift */; };
+		6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */; };
+		6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E428F7A8E100E018F4 /* Notice.swift */; };
+		6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		6C316A2128F6956D006A7473 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C316A2328F6956F006A7473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C316A2628F6956F006A7473 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
+		6CA163E028F7A8B200E018F4 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNoticeView.swift; sourceTree = "<group>"; };
+		6CA163E428F7A8E100E018F4 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,7 @@
 		6C316A2D28F695F8006A7473 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6CA163E428F7A8E100E018F4 /* Notice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,6 +91,7 @@
 		6C316A2E28F6960B006A7473 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -105,6 +117,7 @@
 		6C316A3128F6967B006A7473 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 		6C316A3228F696A1006A7473 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				6CA163E028F7A8B200E018F4 /* DayCell.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -119,6 +133,7 @@
 		6C316A3328F696B1006A7473 /* DailyHistory */ = {
 			isa = PBXGroup;
 			children = (
+				6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */,
 			);
 			path = DailyHistory;
 			sourceTree = "<group>";
@@ -194,6 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
+				6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */,
+				6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */,
+				6CA163DF28F7A89F00E018F4 /* DailyNoticeView.swift in Sources */,
+				6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */,
+				6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */,
 				6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
