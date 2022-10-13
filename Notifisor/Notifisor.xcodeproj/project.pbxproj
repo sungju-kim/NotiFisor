@@ -19,6 +19,7 @@
 		6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */; };
 		6CA163EB28F7B63100E018F4 /* NoticeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */; };
 		6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774028F7E8A400A4CF7A /* Unit.swift */; };
+		6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeEditView.swift; sourceTree = "<group>"; };
 		6CE5774028F7E8A400A4CF7A /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				6CA163E428F7A8E100E018F4 /* Notice.swift */,
 				6CE5774028F7E8A400A4CF7A /* Unit.swift */,
+				6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
 				6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */,
+				6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */,
 				6CA163EB28F7B63100E018F4 /* NoticeEditView.swift in Sources */,
 				6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */,
 				6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */,
