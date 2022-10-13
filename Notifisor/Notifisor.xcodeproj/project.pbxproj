@@ -112,7 +112,7 @@
 		6C316A2F28F69611006A7473 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6CA163E928F7B5E200E018F4 /* Common */,
+				6CA163E928F7B5E200E018F4 /* EditNotice */,
 				6C316A3128F6967B006A7473 /* Today */,
 				6C316A3228F696A1006A7473 /* History */,
 				6C316A3328F696B1006A7473 /* DailyHistory */,
@@ -153,12 +153,12 @@
 			path = DailyHistory;
 			sourceTree = "<group>";
 		};
-		6CA163E928F7B5E200E018F4 /* Common */ = {
+		6CA163E928F7B5E200E018F4 /* EditNotice */ = {
 			isa = PBXGroup;
 			children = (
 				6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */,
 			);
-			path = Common;
+			path = EditNotice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
