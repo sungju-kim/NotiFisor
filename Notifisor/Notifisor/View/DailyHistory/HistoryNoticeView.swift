@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct HistoryNoticeView: View {
+    private let date: Date = .now
+    private var text: String = {
+        let date = Date.now.split()
+        return "\(date[0])년 \(date[1])월 \(date[2])일"
+    }()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            
+        }
+        .navigationTitle(text)
     }
 }
 
