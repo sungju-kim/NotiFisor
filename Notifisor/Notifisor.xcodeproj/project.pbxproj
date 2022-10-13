@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
 		6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A1F28F6956D006A7473 /* NotifisorApp.swift */; };
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
 		6C316A2428F6956F006A7473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C316A2328F6956F006A7473 /* Assets.xcassets */; };
 		6C316A2728F6956F006A7473 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C316A2628F6956F006A7473 /* Preview Assets.xcassets */; };
-		6CA163DF28F7A89F00E018F4 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */; };
+		6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */; };
 		6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E028F7A8B200E018F4 /* DayCell.swift */; };
 		6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */; };
 		6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E428F7A8E100E018F4 /* Notice.swift */; };
@@ -19,12 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
 		6C316A1C28F6956D006A7473 /* Notifisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C316A1F28F6956D006A7473 /* NotifisorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifisorApp.swift; sourceTree = "<group>"; };
 		6C316A2128F6956D006A7473 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C316A2328F6956F006A7473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C316A2628F6956F006A7473 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
+		6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeCell.swift; sourceTree = "<group>"; };
 		6CA163E028F7A8B200E018F4 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNoticeView.swift; sourceTree = "<group>"; };
 		6CA163E428F7A8E100E018F4 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
@@ -117,7 +119,8 @@
 		6C316A3128F6967B006A7473 /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				6CA163DE28F7A89F00E018F4 /* DailyNoticeView.swift */,
+				6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */,
+				00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -208,10 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
 				6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */,
 				6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */,
-				6CA163DF28F7A89F00E018F4 /* DailyNoticeView.swift in Sources */,
+				6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */,
 				6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */,
 				6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */,
 				6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */,
