@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct NumbersOnly {
+    var value: String = "" {
+        didSet {
+            let filterdValue = value.filter { $0.isNumber }
+            value = filterdValue
+        }
+    }
+}
