@@ -13,7 +13,9 @@ struct DailyNoticeCell: View {
             HStack {
                 Text("💊 약 먹기")
                     .font(.title)
+
                 Spacer()
+
                 Text("30분 일정")
             }
             

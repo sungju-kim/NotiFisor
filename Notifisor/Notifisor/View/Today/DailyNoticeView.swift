@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DailyNoticeView: View {
     var body: some View {
-        
         VStack(spacing: 20) {
-            
             HStack {
                 Spacer()
                 
@@ -25,6 +23,7 @@ struct DailyNoticeView: View {
                 }
             }
             .padding()
+
             ScrollView {
                 VStack(spacing: 30) {
                     ForEach(0..<10) { _ in
