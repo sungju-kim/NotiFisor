@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct FulfillmentView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct FulfillmentView: Shape {
+    @State var startAngle: Double
+    @State var endAngle: Double
 
-struct FulfillmentView_Previews: PreviewProvider {
-    static var previews: some View {
-        FulfillmentView()
+    func path(in rect: CGRect) -> Path {
+        return Path { path in
+            path.move(to: CGPoint(x: rect.midX, y: rect.midY))
+            path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
+                        radius: rect.height / 2,
+                        startAngle: .degrees(startAngle),
+                        endAngle: .degrees(endAngle),
+                        clockwise: false)
+        }
     }
 }
