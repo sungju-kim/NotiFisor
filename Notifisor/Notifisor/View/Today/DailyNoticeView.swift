@@ -15,46 +15,62 @@ struct DailyNoticeView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                NavigationLink(destination: EmptyView(), isActive: $showHistory) { EmptyView() }
-                NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
+            ZStack {
+                VStack(spacing: 20) {
+                    NavigationLink(destination: EmptyView(), isActive: $showHistory) { EmptyView() }
+                    NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
 
-                ScrollView {
-                    VStack(spacing: 30) {
-                        ForEach(0..<10) { _ in
-                            DailyNoticeCell()
+                    ScrollView {
+                        VStack(spacing: 30) {
+                            ForEach(0..<10) { _ in
+                                DailyNoticeCell()
+                            }
                         }
-                    }
-                    .padding(.horizontal)
-                }
-            }
-            .background(Color(.systemGray5))
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        showSheet.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.black)
-                    }
-                    .sheet(isPresented: $showSheet) {
-                        NoticeEditView()
+                        .padding(.horizontal)
                     }
                 }
-
-                ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button {
-                        withAnimation {
-                            showMenu.toggle()
+                .background(Color(.systemGray5))
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            showSheet.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.black)
                         }
-                    } label: {
-                        Image(systemName: "list.bullet")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.black)
+                        .sheet(isPresented: $showSheet) {
+                            NoticeEditView()
+                        }
                     }
+
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            withAnimation {
+                                showMenu.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "list.bullet")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
+
+                if showMenu {
+                    let tap = TapGesture()
+                        .onEnded { tap in
+                            withAnimation {
+                                showMenu.toggle()
+                            }
+                        }
+
+                    Color.black.opacity(0.5)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .ignoresSafeArea()
+                        .gesture(tap)
                 }
             }
         }
