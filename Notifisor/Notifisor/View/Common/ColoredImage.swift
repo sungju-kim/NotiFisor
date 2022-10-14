@@ -7,19 +7,14 @@
 
 import SwiftUI
 
-struct BlackImage: View {
-    var source: String
+struct ColoredImage: View {
+    let source: String
+    let color: Color = .black
 
     var body: some View {
         Image(systemName: source)
             .resizable()
             .frame(width: 20, height: 20)
-            .foregroundColor(.black)
-    }
-}
-
-struct BlackImage_Previews: PreviewProvider {
-    static var previews: some View {
-        BlackImage(source: "checkmark")
+            .foregroundColor(color)
     }
 }
