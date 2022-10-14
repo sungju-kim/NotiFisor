@@ -64,6 +64,7 @@ struct NoticeEditView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
+                        //TODO: 뷰모델이나 모델을 저장하는 로직 생성
                         dismiss()
                     }
                 }
