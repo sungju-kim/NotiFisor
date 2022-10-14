@@ -35,10 +35,7 @@ struct DailyNoticeView: View {
                         Button {
                             showSheet.toggle()
                         } label: {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.black)
+                            ColoredImage(source: "plus")
                         }
                         .sheet(isPresented: $showSheet) {
                             NoticeEditView()
@@ -51,10 +48,7 @@ struct DailyNoticeView: View {
                                 showMenu.toggle()
                             }
                         } label: {
-                            Image(systemName: "list.bullet")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.black)
+                            ColoredImage(source: "list.bullet")
                         }
                     }
                 }
