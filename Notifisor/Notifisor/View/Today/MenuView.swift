@@ -10,6 +10,10 @@ import SwiftUI
 struct MenuView: View {
     var body: some View {
         VStack(alignment: .leading) {
+            Text("Notifisor")
+                .font(.largeTitle.bold())
+                .foregroundColor(.white)
+                .padding(.top, 50)
 
             NavigationLink {
                 //TODO: CalenderView
