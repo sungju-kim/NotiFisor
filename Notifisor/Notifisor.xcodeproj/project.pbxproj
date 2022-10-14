@@ -64,6 +64,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0032952628F9842A002376DD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		6C316A1328F6956D006A7473 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +132,7 @@
 		6C316A2F28F69611006A7473 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0032952628F9842A002376DD /* Common */,
 				6CA163E928F7B5E200E018F4 /* EditNotice */,
 				6C316A3128F6967B006A7473 /* Today */,
 				6C316A3228F696A1006A7473 /* History */,
