@@ -24,7 +24,7 @@ struct ContentView: View {
                 DailyNoticeView(showMenu: $showMenu)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width/2 : 0)
-                    .disabled(showMenu ? true : false)
+                    .disabled(showMenu)
                 if showMenu {
                     MenuView()
                         .frame(width: geometry.size.width/2)
