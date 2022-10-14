@@ -41,15 +41,12 @@ struct DailyNoticeView: View {
 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
-                        showSheet.toggle()
+                        showMenu = true
                     } label: {
                         Image(systemName: "list.bullet")
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundColor(.black)
-                    }
-                    .sheet(isPresented: $showSheet) {
-                        NoticeEditView()
                     }
                 }
             }
@@ -57,8 +54,3 @@ struct DailyNoticeView: View {
     }
 }
 
-struct DailyNoticeView_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyNoticeView()
-    }
-}
