@@ -18,11 +18,15 @@ struct NoticeEditView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("일정을 입력해주세요", text: $text)
+                Section {
+                    TextField("일정을 입력해주세요", text: $text)
+                } header: {
+                    SectionHeaderText(text: "할 일")
+                }
 
                 Section {
                     VStack(alignment: .center) {
-                        TextField("목표치", text: $per.value)
+                        TextField("목표치를 입력해주세요.", text: $per.value)
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 200)
@@ -38,7 +42,7 @@ struct NoticeEditView: View {
                         .pickerStyle(.segmented)
                     }
                 } header: {
-                    Text("얼마나 하시겠어요?")
+                    SectionHeaderText(text: "목표 설정")
                 }
 
                 Section {
@@ -47,13 +51,13 @@ struct NoticeEditView: View {
                     }
                     .datePickerStyle(.wheel)
                 } header: {
-                    Text("하루 중 언제 알려드릴까요?")
+                    SectionHeaderText(text: "알림 시간")
                 }
                 
                 Section {
                     RepeatSectionView()
                 } header: {
-                    Text("반복")
+                    SectionHeaderText(text: "반복")
                 }
             }
             .toolbar {
