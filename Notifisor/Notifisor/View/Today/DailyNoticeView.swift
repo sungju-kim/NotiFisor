@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DailyNoticeView: View {
+    @Binding var showMenu: Bool
     @State var showSheet = false
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
