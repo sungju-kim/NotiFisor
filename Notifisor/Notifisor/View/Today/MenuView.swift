@@ -26,10 +26,8 @@ struct MenuView: View {
                 }
             } label: {
                     Image(systemName: "calendar")
-                        .foregroundColor(.gray)
                         .imageScale(.large)
                     Text("Record feed")
-                        .foregroundColor(.gray)
                         .font(.headline)
             }
             .padding(.top, 100)
@@ -41,10 +39,8 @@ struct MenuView: View {
                 }
             } label: {
                     Image(systemName: "person.crop.circle")
-                        .foregroundColor(.gray)
                         .imageScale(.large)
                     Text("Profile")
-                        .foregroundColor(.gray)
                         .font(.headline)
             }
             .padding(.top, 30)
@@ -52,8 +48,15 @@ struct MenuView: View {
             Spacer()
         }
         .padding()
+        .foregroundColor(.gray)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(red: 32/255, green: 32/255, blue: 32/255))
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
