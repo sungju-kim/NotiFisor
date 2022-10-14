@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            DailyNoticeView()
+            DailyNoticeView(showMenu: $showMenu)
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
             if self.showMenu {
