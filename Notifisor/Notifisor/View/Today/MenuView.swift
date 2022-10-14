@@ -26,7 +26,7 @@ struct MenuView: View {
             }
 
             NavigationLink {
-                //TODO: Profile View(개인 정보 설정, UserDefault)
+                //TODO: ProfileView(개인 정보 설정, UserDefault)
             } label: {
                 HStack {
                     Image(systemName: "person.crop.circle")
