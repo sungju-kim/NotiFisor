@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DailyNoticeView: View {
+    @Binding var showMenu: Bool
     @State var showSheet = false
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -39,15 +41,14 @@ struct DailyNoticeView: View {
 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
-                        showSheet.toggle()
+                        withAnimation {
+                            showMenu.toggle()
+                        }
                     } label: {
                         Image(systemName: "list.bullet")
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundColor(.black)
-                    }
-                    .sheet(isPresented: $showSheet) {
-                        NoticeEditView()
                     }
                 }
             }
@@ -55,8 +56,3 @@ struct DailyNoticeView: View {
     }
 }
 
-struct DailyNoticeView_Previews: PreviewProvider {
-    static var previews: some View {
-        DailyNoticeView()
-    }
-}
