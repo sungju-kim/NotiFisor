@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var showMenu = false
+
     var body: some View {
         NavigationView {
             DailyNoticeView()
