@@ -13,7 +13,7 @@ struct MenuView: View {
             Text("Notifisor")
                 .font(.largeTitle.bold())
                 .foregroundColor(.white)
-                .padding(.top, 50)
+                .padding(.top, 30)
 
             NavigationLink {
                 //TODO: CalenderView
