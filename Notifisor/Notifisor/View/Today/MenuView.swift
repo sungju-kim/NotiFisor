@@ -9,7 +9,42 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+
+            NavigationLink {
+                //TODO: CalenderView
+            } label: {
+                HStack {
+                    Image(systemName: "calendar")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Record feed")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+                .padding(.top, 100)
+            }
+
+            NavigationLink {
+                //TODO: Profile View(개인 정보 설정, UserDefault)
+            } label: {
+                HStack {
+                    Image(systemName: "person.crop.circle")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Profile")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+                .padding(.top, 30)
+            }
+
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(red: 32/255, green: 32/255, blue: 32/255))
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
