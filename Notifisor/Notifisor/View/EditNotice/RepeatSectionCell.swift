@@ -22,7 +22,6 @@ struct RepeatSectionCell: View {
                 if isSelected {
                     Image(systemName: "checkmark")
                         .tint(.black)
-                    
                 }
             }
         }
@@ -31,6 +30,6 @@ struct RepeatSectionCell: View {
 
 struct RepeatSectionCell_Previews: PreviewProvider {
     static var previews: some View {
-        RepeatSectionCell(title: "monday")
+        RepeatSectionView()
     }
 }
