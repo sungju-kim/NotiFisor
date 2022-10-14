@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Binding var showHistory: Bool
+    @Binding var showProfile: Bool
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("Notifisor")
@@ -15,33 +18,29 @@ struct MenuView: View {
                 .foregroundColor(.white)
                 .padding(.top, 30)
 
-            NavigationLink {
+            Button {
                 //TODO: CalenderView
             } label: {
-                HStack {
                     Image(systemName: "calendar")
                         .foregroundColor(.gray)
                         .imageScale(.large)
                     Text("Record feed")
                         .foregroundColor(.gray)
                         .font(.headline)
-                }
-                .padding(.top, 100)
             }
+            .padding(.top, 100)
 
-            NavigationLink {
+            Button {
                 //TODO: ProfileView(개인 정보 설정, UserDefault)
             } label: {
-                HStack {
                     Image(systemName: "person.crop.circle")
                         .foregroundColor(.gray)
                         .imageScale(.large)
                     Text("Profile")
                         .foregroundColor(.gray)
                         .font(.headline)
-                }
-                .padding(.top, 30)
             }
+            .padding(.top, 30)
 
             Spacer()
         }
@@ -52,8 +51,8 @@ struct MenuView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView()
-    }
-}
+//struct MenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuView()
+//    }
+//}

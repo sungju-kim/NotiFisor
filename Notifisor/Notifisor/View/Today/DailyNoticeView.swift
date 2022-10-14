@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DailyNoticeView: View {
     @Binding var showMenu: Bool
+    @Binding var showHistory: Bool
+    @Binding var showProfile: Bool
     @State var showSheet = false
     
     var body: some View {
