@@ -11,6 +11,7 @@
 		0032950728F7EE24002376DD /* RepeatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950628F7EE24002376DD /* RepeatSectionView.swift */; };
 		0032950928F83573002376DD /* FulfillmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950828F83573002376DD /* FulfillmentView.swift */; };
 		0032952528F9024C002376DD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952428F9024C002376DD /* MenuView.swift */; };
+		0032952828F98554002376DD /* BlackImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952728F98554002376DD /* BlackImage.swift */; };
 		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
 		6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A1F28F6956D006A7473 /* NotifisorApp.swift */; };
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
@@ -34,6 +35,7 @@
 		0032950628F7EE24002376DD /* RepeatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatSectionView.swift; sourceTree = "<group>"; };
 		0032950828F83573002376DD /* FulfillmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfillmentView.swift; sourceTree = "<group>"; };
 		0032952428F9024C002376DD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0032952728F98554002376DD /* BlackImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackImage.swift; sourceTree = "<group>"; };
 		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
 		6C316A1C28F6956D006A7473 /* Notifisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C316A1F28F6956D006A7473 /* NotifisorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifisorApp.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		0032952628F9842A002376DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0032952728F98554002376DD /* BlackImage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
+				0032952828F98554002376DD /* BlackImage.swift in Sources */,
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
 				6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */,
 				6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */,
