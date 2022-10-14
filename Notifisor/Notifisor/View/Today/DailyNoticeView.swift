@@ -41,7 +41,9 @@ struct DailyNoticeView: View {
 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
-                        showMenu = true
+                        withAnimation {
+                            showMenu.toggle()
+                        }
                     } label: {
                         Image(systemName: "list.bullet")
                             .resizable()
