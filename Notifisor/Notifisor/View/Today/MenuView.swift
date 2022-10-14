@@ -54,9 +54,3 @@ struct MenuView: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
-
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
