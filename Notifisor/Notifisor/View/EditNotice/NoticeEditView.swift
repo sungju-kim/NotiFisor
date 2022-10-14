@@ -22,12 +22,12 @@ struct NoticeEditView: View {
 
                 Section {
                     VStack(alignment: .center) {
-                        TextField("", text: $per.value)
+                        TextField("목표치", text: $per.value)
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 200)
 
-                        Spacer()
+                        Divider()
 
                         Picker("단위", selection: $selectedUnit) {
                             ForEach(Unit.allCases, id: \.self) {
