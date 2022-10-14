@@ -10,6 +10,7 @@
 		0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950428F7EC53002376DD /* RepeatSectionCell.swift */; };
 		0032950728F7EE24002376DD /* RepeatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950628F7EE24002376DD /* RepeatSectionView.swift */; };
 		0032950928F83573002376DD /* FulfillmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950828F83573002376DD /* FulfillmentView.swift */; };
+		0032952528F9024C002376DD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952428F9024C002376DD /* MenuView.swift */; };
 		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
 		6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A1F28F6956D006A7473 /* NotifisorApp.swift */; };
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
@@ -32,6 +33,7 @@
 		0032950428F7EC53002376DD /* RepeatSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatSectionCell.swift; sourceTree = "<group>"; };
 		0032950628F7EE24002376DD /* RepeatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatSectionView.swift; sourceTree = "<group>"; };
 		0032950828F83573002376DD /* FulfillmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfillmentView.swift; sourceTree = "<group>"; };
+		0032952428F9024C002376DD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
 		6C316A1C28F6956D006A7473 /* Notifisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C316A1F28F6956D006A7473 /* NotifisorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifisorApp.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */,
 				00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */,
+				0032952428F9024C002376DD /* MenuView.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				0032950728F7EE24002376DD /* RepeatSectionView.swift in Sources */,
 				6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */,
 				6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */,
+				0032952528F9024C002376DD /* MenuView.swift in Sources */,
 				6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */,
 				6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */,
 				6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */,
