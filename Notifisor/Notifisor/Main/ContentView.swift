@@ -31,7 +31,9 @@ struct ContentView: View {
                     .disabled(showMenu)
                 if showMenu {
                     MenuView(showHistory: $showHistory,
-                             showProfile: $showProfile)
+                             showProfile: $showProfile,
+                             showMenu: $showMenu
+                    )
                         .frame(width: geometry.size.width/2)
                         .transition(.move(edge: .leading))
                 }

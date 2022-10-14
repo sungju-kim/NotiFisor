@@ -16,6 +16,9 @@ struct DailyNoticeView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
+                NavigationLink(destination: EmptyView(), isActive: $showHistory) { EmptyView() }
+                NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
+
                 ScrollView {
                     VStack(spacing: 30) {
                         ForEach(0..<10) { _ in

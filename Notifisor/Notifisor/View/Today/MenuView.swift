@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuView: View {
     @Binding var showHistory: Bool
     @Binding var showProfile: Bool
+    @Binding var showMenu: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,7 +20,10 @@ struct MenuView: View {
                 .padding(.top, 30)
 
             Button {
-                //TODO: CalenderView
+                withAnimation {
+                    showHistory.toggle()
+                    showMenu.toggle()
+                }
             } label: {
                     Image(systemName: "calendar")
                         .foregroundColor(.gray)
@@ -31,7 +35,10 @@ struct MenuView: View {
             .padding(.top, 100)
 
             Button {
-                //TODO: ProfileView(개인 정보 설정, UserDefault)
+                withAnimation {
+                    showProfile.toggle()
+                    showMenu.toggle()
+                }
             } label: {
                     Image(systemName: "person.crop.circle")
                         .foregroundColor(.gray)
@@ -50,9 +57,3 @@ struct MenuView: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
-
-//struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuView()
-//    }
-//}
