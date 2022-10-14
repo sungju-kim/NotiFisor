@@ -10,35 +10,48 @@ import SwiftUI
 struct DailyNoticeView: View {
     @State var showSheet = false
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Spacer()
-                
-                Button {
-                    showSheet.toggle()
-                } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.black)
-                }
-                .sheet(isPresented: $showSheet) {
-                    NoticeEditView()
+        NavigationView {
+            VStack(spacing: 20) {
+                ScrollView {
+                    VStack(spacing: 30) {
+                        ForEach(0..<10) { _ in
+                            DailyNoticeCell()
+                        }
+                    }
+                    .padding(.horizontal)
                 }
             }
-            .padding()
-
-            ScrollView {
-                VStack(spacing: 30) {
-                    ForEach(0..<10) { _ in
-                        DailyNoticeCell()
+            .background(Color(.systemGray5))
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.black)
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        NoticeEditView()
                     }
                 }
-                .padding(.horizontal)
+
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Image(systemName: "list.bullet")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.black)
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        NoticeEditView()
+                    }
+                }
             }
         }
-        .background(Color(.systemGray5))
-
     }
 }
 
