@@ -13,11 +13,9 @@ struct ContentView: View {
 
     var body: some View {
         let drag = DragGesture()
-            .onEnded {
-                if $0.translation.width < -100 {
-                    withAnimation {
-                        self.showMenu = false
-                    }
+            .onEnded { move in
+                withAnimation {
+                    showMenu = move.translation.width >= -100
                 }
             }
 
@@ -25,9 +23,9 @@ struct ContentView: View {
             ZStack(alignment: .leading) {
                 DailyNoticeView(showMenu: $showMenu)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: self.showMenu ? geometry.size.width/2 : 0)
-                    .disabled(self.showMenu ? true : false)
-                if self.showMenu {
+                    .offset(x: showMenu ? geometry.size.width/2 : 0)
+                    .disabled(showMenu ? true : false)
+                if showMenu {
                     MenuView()
                         .frame(width: geometry.size.width/2)
                         .transition(.move(edge: .leading))
