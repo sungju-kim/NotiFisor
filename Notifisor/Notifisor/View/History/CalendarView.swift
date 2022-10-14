@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct CalendarView: View {
-    let columns: [GridItem] = (0..<7).map { _ in GridItem(.flexible(minimum: 0, maximum: 1000), spacing: nil, alignment: nil) }
-
        var body: some View {
-           LazyVGrid(columns: columns, alignment: .center, spacing: 16) {
+           LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
                ForEach(1..<32) { index in
                    DayCell(day: index)
                }
-
            }
            .padding()
            .background(.ultraThickMaterial)
