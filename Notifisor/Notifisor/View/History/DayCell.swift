@@ -10,10 +10,13 @@ import SwiftUI
 struct DayCell: View {
     let day: Int
     var body: some View {
-        NavigationView {
+        NavigationLink {
+
+        } label: {
             VStack {
                 Text(day, format: .number)
                     .font(.title)
+                    .foregroundColor(.black)
 
                 FulfillmentView(startAngle: 0, endAngle: 270)
                     .fill(Color.yellow)
