@@ -28,7 +28,6 @@ struct ContentView: View {
                                 showProfile: $showProfile)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width/2 : 0)
-                    .disabled(showMenu)
                 if showMenu {
                     MenuView(showHistory: $showHistory,
                              showProfile: $showProfile,
