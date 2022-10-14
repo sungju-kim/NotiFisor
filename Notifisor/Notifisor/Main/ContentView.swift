@@ -12,7 +12,14 @@ struct ContentView: View {
     @State var showMenu = false
 
     var body: some View {
+        GeometryReader { geometry in
             DailyNoticeView()
+                .frame(width: geometry.size.width,
+                       height: geometry.size.height)
+            if self.showMenu {
+                MenuView()
+                    .frame(width: geometry.size.width/2)
+            }
         }
     }
 }
