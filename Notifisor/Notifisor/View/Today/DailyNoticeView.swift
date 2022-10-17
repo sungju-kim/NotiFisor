@@ -17,7 +17,7 @@ struct DailyNoticeView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 20) {
-                    NavigationLink(destination: EmptyView(), isActive: $showHistory) { EmptyView() }
+                    NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
                     NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
 
                     ScrollView {
