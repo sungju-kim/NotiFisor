@@ -23,6 +23,7 @@ struct CalendarView: View {
         NavigationView {
             LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
                 Section {
+                    DayOfWeekView()
                     ForEach(days(for: month), id: \.self) { date in
                         let cell = DayCell(day: date.get(.day))
                         if calendar.isDate(date, equalTo: month, toGranularity: .month) {
