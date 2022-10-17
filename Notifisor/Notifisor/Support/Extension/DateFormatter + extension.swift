@@ -16,7 +16,7 @@ extension DateFormatter {
 
     static var monthAndYear: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM yyyy"
+        formatter.dateFormat = "yyyy년 MM월"
         return formatter
     }
 }
