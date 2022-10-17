@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DayCell: View {
     let day: Int
-    let percentage: CGFloat = 0
+    var percentage: CGFloat = 0
 
     var body: some View {
         NavigationLink {
@@ -38,6 +38,6 @@ struct DayCell: View {
 
 struct DayCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayCell(day: 1)
+        DayCell(day: 1, percentage: 0.8)
     }
 }
