@@ -13,6 +13,13 @@ struct MenuView: View {
     @Binding var showMenu: Bool
 
     var body: some View {
+        let drag = DragGesture()
+            .onEnded { move in
+                withAnimation {
+                    showMenu = move.translation.width >= -100
+                }
+            }
+
         VStack(alignment: .leading) {
             Text("Notifisor")
                 .font(.largeTitle.bold())
@@ -52,5 +59,6 @@ struct MenuView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(red: 32/255, green: 32/255, blue: 32/255))
         .edgesIgnoringSafeArea(.all)
+        .gesture(drag)
     }
 }

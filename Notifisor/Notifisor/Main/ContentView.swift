@@ -14,12 +14,12 @@ struct ContentView: View {
     @State var showProfile = false
 
     var body: some View {
-        let drag = DragGesture()
-            .onEnded { move in
-                withAnimation {
-                    showMenu = move.translation.width >= -100
-                }
-            }
+//        let drag = DragGesture()
+//            .onEnded { move in
+//                withAnimation {
+//                    showMenu = move.translation.width >= -100
+//                }
+//            }
 
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
@@ -37,7 +37,7 @@ struct ContentView: View {
                         .transition(.move(edge: .leading))
                 }
             }
-            .gesture(drag)
+//            .gesture(drag)
         }
     }
 }
