@@ -20,9 +20,9 @@ struct MenuView: View {
                 .padding(.top, 30)
 
             Button {
+                showMenu.toggle()
                 withAnimation {
                     showHistory.toggle()
-                    showMenu.toggle()
                 }
             } label: {
                     Image(systemName: "calendar")
@@ -33,9 +33,9 @@ struct MenuView: View {
             .padding(.top, 100)
 
             Button {
+                showMenu.toggle()
                 withAnimation {
                     showProfile.toggle()
-                    showMenu.toggle()
                 }
             } label: {
                     Image(systemName: "person.crop.circle")
