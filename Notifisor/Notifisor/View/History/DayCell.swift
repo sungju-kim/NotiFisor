@@ -9,19 +9,28 @@ import SwiftUI
 
 struct DayCell: View {
     let day: Int
+    var percentage: CGFloat = 0
+
     var body: some View {
         NavigationLink {
 
         } label: {
-            VStack {
+            ZStack {
                 Text(day, format: .number)
-                    .font(.title)
+                    .font(.callout)
                     .foregroundColor(.black)
+                
+                Circle()
+                    .stroke(Color.gray, lineWidth: 5)
+                    .opacity(0.1)
 
-                FulfillmentView(startAngle: 0, endAngle: 270)
-                    .fill(Color.yellow)
+                Circle()
+                    .trim(from: 0, to: percentage)
+                    .stroke(style: StrokeStyle(lineWidth: 5,
+                                               lineCap: .round,
+                                               lineJoin: .round))
+                    .foregroundColor(.yellow)
                     .rotationEffect(.degrees(-90))
-                    .frame(width: 30, height: 30)
             }
         }
     }
@@ -29,6 +38,6 @@ struct DayCell: View {
 
 struct DayCell_Previews: PreviewProvider {
     static var previews: some View {
-        DayCell(day: 1)
+        DayCell(day: 1, percentage: 0.8)
     }
 }
