@@ -52,6 +52,8 @@ struct DailyNoticeView: View {
                         }
                     }
                 }
+                .navigationTitle("DailyNoticeView")
+                .navigationBarTitleDisplayMode(.inline)
 
                 if showMenu {
                     let tap = TapGesture()
