@@ -12,7 +12,11 @@ struct DailyNoticeView: View {
     @Binding var showHistory: Bool
     @Binding var showProfile: Bool
     @State var showSheet = false
-    let notices: Notices
+
+    @FetchRequest(entity: Notice.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)])
+    var notices: FetchedResults<Notice>
+
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         NavigationView {
@@ -23,7 +27,7 @@ struct DailyNoticeView: View {
 
                     ScrollView {
                         VStack(spacing: 30) {
-                            ForEach(notices, id: \.self) { notice in
+                            ForEach(notices) { notice in
                                 DailyNoticeCell(notice: notice)
                             }
                         }
