@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoticeEditView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) private var dismiss
     // ViewModel Import 후 변경예정
     @State var text: String = ""
@@ -68,11 +69,29 @@ struct NoticeEditView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        //TODO: 뷰모델이나 모델을 저장하는 로직 생성
+                        addNotice(text: text, per: per, selecedUnit: selectedUnit, date: date)
+                        saveContext()
                         dismiss()
                     }
                 }
             }
+        }
+    }
+
+    func addNotice(text: String, per: NumbersOnly, selecedUnit: Unit, date: Date) {
+        let newNotice = Notice(context: managedObjectContext)
+
+        newNotice.title = text
+        newNotice.amount = Int64(per.value)!
+        newNotice.unit = selectedUnit.text
+        newNotice.noticeTime = date
+    }
+
+    func saveContext() {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
         }
     }
 }
