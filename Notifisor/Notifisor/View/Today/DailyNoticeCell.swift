@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct DailyNoticeCell: View {
-    @State var notice: Notice
+    @ObservedObject var notice: Notice
     var body: some View {
         VStack(alignment: .trailing, spacing: 40) {
             HStack {
-                Text(notice.title)
+                Text(notice.title ?? "")
                     .font(.title)
 
                 Spacer()
 
-                Text(notice.schedule)
+                Text("\(notice.amount)\(notice.unit ?? "")")
             }
-            
+
             HStack {
-                Text(notice.noticeTime, format: .dateTime.hour().minute())
+                Text(notice.noticeTime ?? Date.now , format: .dateTime.hour().minute())
+                    .foregroundStyle(.secondary)
+
+                Text("알림 예정")
                     .foregroundStyle(.secondary)
             }
         }
