@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var showMenu = false
     @State var showHistory = false
     @State var showProfile = false
+    @State var notices: Notices
 
     var body: some View {
         let drag = DragGesture()
@@ -25,7 +26,9 @@ struct ContentView: View {
             ZStack(alignment: .leading) {
                 DailyNoticeView(showMenu: $showMenu,
                                 showHistory: $showHistory,
-                                showProfile: $showProfile)
+                                showProfile: $showProfile,
+                                notices: notices
+                )
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: showMenu ? geometry.size.width/2 : 0)
                 if showMenu {
@@ -39,11 +42,5 @@ struct ContentView: View {
             }
             .gesture(drag)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

@@ -12,6 +12,7 @@ struct DailyNoticeView: View {
     @Binding var showHistory: Bool
     @Binding var showProfile: Bool
     @State var showSheet = false
+    let notices: Notices
     
     var body: some View {
         NavigationView {
@@ -22,8 +23,8 @@ struct DailyNoticeView: View {
 
                     ScrollView {
                         VStack(spacing: 30) {
-                            ForEach(0..<10) { _ in
-                                DailyNoticeCell()
+                            ForEach(notices, id: \.self) { notice in
+                                DailyNoticeCell(notice: notice)
                             }
                         }
                         .padding(.horizontal)
