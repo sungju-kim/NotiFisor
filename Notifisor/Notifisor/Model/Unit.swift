@@ -25,13 +25,4 @@ enum Unit: String, CaseIterable {
             return "회"
         }
     }
-
-//    var per: [String] {
-//        switch self {
-//        case .hour, .km:
-//            return ["1", "2", "3", "4", "5"]
-//        case .minute, .times:
-//            return ["15", "30", "45"]
-//        }
-//    }
 }

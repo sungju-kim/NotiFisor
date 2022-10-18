@@ -13,17 +13,6 @@ struct ContentView: View {
     @State var showHistory = false
     @State var showProfile = false
 
-    @FetchRequest(
-        entity: Notice.entity(),
-        sortDescriptors: []
-//            NSSortDescriptor(keyPath: \Notice.title, ascending: true)
-//        ],
-//        predicate: NSPredicate(format: "genre contains 'Action'")
-    ) var notices: FetchedResults<Notice>
-
-    @Environment(\.managedObjectContext) var managedObjectContext
-    //    @State var notices: Notices
-
     var body: some View {
         let drag = DragGesture()
             .onEnded { move in
@@ -36,8 +25,7 @@ struct ContentView: View {
             ZStack(alignment: .leading) {
                 DailyNoticeView(showMenu: $showMenu,
                                 showHistory: $showHistory,
-                                showProfile: $showProfile,
-                                notices: notices
+                                showProfile: $showProfile
                 )
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .offset(x: showMenu ? geometry.size.width/2 : 0)
