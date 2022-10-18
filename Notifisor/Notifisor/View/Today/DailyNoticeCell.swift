@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DailyNoticeCell: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+
     @ObservedObject var notice: Notice
     var body: some View {
         VStack(alignment: .trailing, spacing: 40) {
@@ -35,13 +37,16 @@ struct DailyNoticeCell: View {
         .shadow(radius: 1, x: 5, y: 5)
         .onTapGesture {
             notice.isDone.toggle()
-            //coreData.save()
+            saveContext()
+        }
+    }
+
+    func saveContext() {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("error")
         }
     }
 }
 
-//struct DailyNoticeCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DailyNoticeCell()
-//    }
-//}
