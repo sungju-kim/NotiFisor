@@ -12,7 +12,17 @@ struct ContentView: View {
     @State var showMenu = false
     @State var showHistory = false
     @State var showProfile = false
-    @State var notices: Notices
+
+    @FetchRequest(
+        entity: Notice.entity(),
+        sortDescriptors: []
+//            NSSortDescriptor(keyPath: \Notice.title, ascending: true)
+//        ],
+//        predicate: NSPredicate(format: "genre contains 'Action'")
+    ) var notices: FetchedResults<Notice>
+
+    @Environment(\.managedObjectContext) var managedObjectContext
+    //    @State var notices: Notices
 
     var body: some View {
         let drag = DragGesture()
@@ -29,15 +39,15 @@ struct ContentView: View {
                                 showProfile: $showProfile,
                                 notices: notices
                 )
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .offset(x: showMenu ? geometry.size.width/2 : 0)
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .offset(x: showMenu ? geometry.size.width/2 : 0)
                 if showMenu {
                     MenuView(showHistory: $showHistory,
                              showProfile: $showProfile,
                              showMenu: $showMenu
                     )
-                        .frame(width: geometry.size.width/2)
-                        .transition(.move(edge: .leading))
+                    .frame(width: geometry.size.width/2)
+                    .transition(.move(edge: .leading))
                 }
             }
             .gesture(drag)

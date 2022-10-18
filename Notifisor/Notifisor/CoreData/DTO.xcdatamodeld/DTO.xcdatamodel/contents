@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21277" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Notice" representedClassName="Notice" syncable="YES" codeGenerationType="category">
+        <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="iSDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="noticeTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="repeats" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <relationship name="family" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notices" inverseName="members" inverseEntity="Notices"/>
+    </entity>
+    <entity name="Notices" representedClassName="Notices" syncable="YES" codeGenerationType="category">
+        <relationship name="members" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notice" inverseName="family" inverseEntity="Notice"/>
+    </entity>
+</model>

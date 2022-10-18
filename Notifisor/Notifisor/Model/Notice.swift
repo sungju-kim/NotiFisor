@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Notice: Hashable {
-    let title: String
-    let amount: Int
-    let unit: Unit
-    let noticeTime: Date
-    let repeatAction: [Repeat]
-    var isDone: Bool = false
-    var schedule: String {
-        return "\(amount)\(unit.text) 일정"
-    }
-}
+//struct Notice: Hashable {
+//    let title: String
+//    let amount: Int
+//    let unit: Unit
+//    let noticeTime: Date
+//    let repeatAction: [Repeat]
+//    var isDone: Bool = false
+//    var schedule: String {
+//        return "\(amount)\(unit.text) 일정"
+//    }
+//}
 
-typealias Notices = [Notice]
+//typealias Notices = [Notice]
