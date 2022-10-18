@@ -11,14 +11,7 @@ import CoreData
 
 @main
 struct NotifisorApp: App {
-//    let notices = [
-//        Notice(title: "약먹기", amount: 3, unit: .times, noticeTime: Date.now, repeatAction: [.everyFriday, .everyMonday]),
-//        Notice(title: "달리기", amount: 3, unit: .km, noticeTime: Date.now, repeatAction: [.everyMonday, .everyTuesday, .everySaturday]),
-//        Notice(title: "책읽기", amount: 1, unit: .times, noticeTime: Date.now, repeatAction: [.everySunday, .everySaturday])
-//    ]
-
     let persistenceController = PersistenceController.shared
-
 
     var body: some Scene {
         WindowGroup {
