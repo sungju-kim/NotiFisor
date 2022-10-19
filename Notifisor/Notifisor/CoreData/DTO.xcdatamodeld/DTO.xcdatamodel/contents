@@ -6,7 +6,7 @@
         <relationship name="month" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Month" inverseName="days" inverseEntity="Month"/>
         <relationship name="notices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notice" inverseName="day" inverseEntity="Notice"/>
     </entity>
-    <entity name="Month" representedClassName="Month" syncable="YES" codeGenerationType="class">
+    <entity name="Month" representedClassName="Month" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="month" inverseEntity="Day"/>
     </entity>

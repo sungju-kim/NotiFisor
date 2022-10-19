@@ -30,4 +30,25 @@ extension Calendar {
         let components = Calendar.current.dateComponents([.year, .month], from: date)
         return Calendar.current.date(from: components) ?? Date.now
     }
+
+    static func generateMonthDate(_ year: Int, _ month: Int) -> Date {
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        return Calendar.current.date(from: components) ?? Date()
+    }
+
+    static func days(for month: Date) -> [Date] {
+        let calendar = Self.current
+        guard
+            let monthInterval = calendar.dateInterval(of: .month, for: month),
+            let monthFirstWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval.start),
+            let monthLastWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval.end)
+        else { return [] }
+
+        return calendar.generateDates(
+            inside: DateInterval(start: monthFirstWeek.start, end: monthLastWeek.end),
+            matching: DateComponents(hour: 0, minute: 0, second: 0)
+        )
+    }
 }
