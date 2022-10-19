@@ -8,7 +8,7 @@
     </entity>
     <entity name="Month" representedClassName="Month" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="days" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="month" inverseEntity="Day"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="month" inverseEntity="Day"/>
     </entity>
     <entity name="Notice" representedClassName="Notice" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="Int"/>
