@@ -20,7 +20,7 @@ struct CalendarView: View {
     }
 
     var body: some View {
-        NavigationView {
+        VStack {
             LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
                 Section {
                     DayOfWeekView()
@@ -51,7 +51,6 @@ struct CalendarView: View {
 
                     }
                 }
-
             }
             .padding()
             .background(.ultraThickMaterial)
