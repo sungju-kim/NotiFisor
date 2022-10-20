@@ -8,7 +8,7 @@
 import Foundation
 
 struct NumbersOnly {
-    var value: String = "" {
+    var value: String = "1" {
         didSet {
             let filterdValue = value.filter { $0.isNumber }
             value = filterdValue

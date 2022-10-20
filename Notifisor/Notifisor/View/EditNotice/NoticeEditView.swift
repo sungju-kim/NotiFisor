@@ -82,7 +82,7 @@ struct NoticeEditView: View {
         let newNotice = Notice(context: managedObjectContext)
 
         newNotice.title = text
-        newNotice.amount = Int64(per.value)!
+        newNotice.amount = Int64(per.value) ?? 1
         newNotice.unit = selectedUnit.text
         newNotice.noticeTime = date
     }
