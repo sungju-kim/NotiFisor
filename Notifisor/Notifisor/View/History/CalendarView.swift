@@ -8,43 +8,57 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.calendar) var calendar
+    @Environment(\.managedObjectContext) var context
 
-    @State var month: Date = .now
+    @FetchRequest (
+        entity: Month.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "date == %@", argumentArray: [Calendar.generateMonthDate(Date.now)])
+    ) var month: FetchedResults<Month>
 
-    private var beforeMonth: Date {
-        return Calendar.current.date(byAdding: .month, value: -1, to: month) ?? Date()
-    }
+//    @State var month: Date = Date.now
 
-    private var nextMonth: Date {
-        return Calendar.current.date(byAdding: .month, value: 1, to: month) ?? Date()
-    }
+//    private var beforeMonth: Date {
+//        return Calendar.current.date(byAdding: .month, value: -1, to: month) ?? Date()
+//    }
+//
+//    private var nextMonth: Date {
+//        return Calendar.current.date(byAdding: .month, value: 1, to: month) ?? Date()
+//    }
 
     var body: some View {
         VStack {
             LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
                 Section {
                     DayOfWeekView()
-                    ForEach(days(for: month), id: \.self) { date in
-                        let cell = DayCell(day: date.get(.day))
-                        if calendar.isDate(date, equalTo: month, toGranularity: .month) {
-                            cell
-                        } else {
-                            cell.hidden()
+                    if let days = month.first?.days?.allObjects as? [Day],
+                       let representDate = month.first?.date
+                    {
+                        ForEach(days, id: \.self) { day in
+//                            let cell = DayCell(day: date.get(.day))
+                            let cell = DayCell(day: day.date?.get(.day) ?? 0)
+                            if calendar.isDate(day.date ?? Date(), equalTo: representDate, toGranularity: .month) {
+                                cell
+                            } else {
+//                                cell.hidden()
+                            }
                         }
                     }
                 } header: {
                     HStack {
                         Button {
-                            month = beforeMonth
+//                            month = beforeMonth
+                            fetchMonth(isNextTo: false)
                         } label: {
                             Image(systemName: "chevron.left")
                         }
 
-                        Text(DateFormatter.monthAndYear.string(from: month))
+                        Text(DateFormatter.monthAndYear.string(from: month.first?.date ?? Date()))
                             .font(.title)
 
                         Button {
-                            month = nextMonth
+//                            month = nextMonth
+                            fetchMonth(isNextTo: true)
                         } label: {
                             Image(systemName: "chevron.right")
                         }
@@ -71,6 +85,14 @@ struct CalendarView: View {
             inside: DateInterval(start: monthFirstWeek.start, end: monthLastWeek.end),
             matching: DateComponents(hour: 0, minute: 0, second: 0)
         )
+    }
+
+    private func fetchMonth(isNextTo: Bool) {
+        let move = isNextTo ? 1 : -1
+        let currentDate = month.first?.date ?? Date()
+        let movedDate = Calendar.current
+            .date(byAdding: .month, value: move, to: currentDate) ?? Date()
+        month.nsPredicate = NSPredicate(format: "date == %@", argumentArray: [movedDate])
     }
 }
 
