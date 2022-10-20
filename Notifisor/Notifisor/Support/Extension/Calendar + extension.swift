@@ -31,14 +31,14 @@ extension Calendar {
         return Calendar.current.date(from: components) ?? Date.now
     }
 
-    static func generateMonthDate(_ year: Int, _ month: Int) -> Date {
+    func generateMonthDate(_ year: Int, _ month: Int) -> Date {
         var components = DateComponents()
         components.year = year
         components.month = month
         return Calendar.current.date(from: components) ?? Date()
     }
 
-    static func days(for month: Date) -> [Date] {
+    func days(for month: Date) -> [Date] {
         let calendar = Self.current
         guard
             let monthInterval = calendar.dateInterval(of: .month, for: month),
