@@ -8,23 +8,12 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.calendar) var calendar
-    @Environment(\.managedObjectContext) var context
 
     @FetchRequest (
         entity: Month.entity(),
         sortDescriptors: [],
         predicate: NSPredicate(format: "date == %@", argumentArray: [Calendar.generateMonthDate(Date.now)])
     ) var month: FetchedResults<Month>
-
-//    @State var month: Date = Date.now
-
-//    private var beforeMonth: Date {
-//        return Calendar.current.date(byAdding: .month, value: -1, to: month) ?? Date()
-//    }
-//
-//    private var nextMonth: Date {
-//        return Calendar.current.date(byAdding: .month, value: 1, to: month) ?? Date()
-//    }
 
     var body: some View {
         VStack {
@@ -34,20 +23,18 @@ struct CalendarView: View {
                     if let days = month.first?.days?.allObjects as? [Day],
                        let representDate = month.first?.date
                     {
-                        ForEach(days, id: \.self) { day in
-//                            let cell = DayCell(day: date.get(.day))
+                        ForEach(days.sorted(), id: \.self) { day in
                             let cell = DayCell(day: day.date?.get(.day) ?? 0)
                             if calendar.isDate(day.date ?? Date(), equalTo: representDate, toGranularity: .month) {
                                 cell
                             } else {
-//                                cell.hidden()
+                                cell.hidden()
                             }
                         }
                     }
                 } header: {
                     HStack {
                         Button {
-//                            month = beforeMonth
                             fetchMonth(isNextTo: false)
                         } label: {
                             Image(systemName: "chevron.left")
@@ -57,7 +44,6 @@ struct CalendarView: View {
                             .font(.title)
 
                         Button {
-//                            month = nextMonth
                             fetchMonth(isNextTo: true)
                         } label: {
                             Image(systemName: "chevron.right")
@@ -72,19 +58,6 @@ struct CalendarView: View {
             .shadow(radius: 1, x: 5, y: 5)
         }
 
-    }
-
-    private func days(for month: Date) -> [Date] {
-        guard
-            let monthInterval = calendar.dateInterval(of: .month, for: month),
-            let monthFirstWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval.start),
-            let monthLastWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval.end)
-        else { return [] }
-
-        return calendar.generateDates(
-            inside: DateInterval(start: monthFirstWeek.start, end: monthLastWeek.end),
-            matching: DateComponents(hour: 0, minute: 0, second: 0)
-        )
     }
 
     private func fetchMonth(isNextTo: Bool) {
