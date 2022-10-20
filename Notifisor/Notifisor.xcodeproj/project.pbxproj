@@ -19,6 +19,8 @@
 		00D9DB4428FD2B060030A2C7 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */; };
 		00DAAD3C290002C300BCE729 /* Month+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */; };
 		00DAAD3D290002C300BCE729 /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */; };
+		00E08A9A2901134B0008D743 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E08A982901134B0008D743 /* Day+CoreDataClass.swift */; };
+		00E08A9B2901134B0008D743 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */; };
 		00FF9FF928FFFFFB0079825A /* Month + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF9FF828FFFFFB0079825A /* Month + extension.swift */; };
 		6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A1F28F6956D006A7473 /* NotifisorApp.swift */; };
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
@@ -54,6 +56,8 @@
 		00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
 		00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataClass.swift"; path = "Notifisor/CoreData/Month+CoreDataClass.swift"; sourceTree = "<group>"; };
 		00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataProperties.swift"; path = "Notifisor/CoreData/Month+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00E08A982901134B0008D743 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Day+CoreDataClass.swift"; path = "Notifisor/CoreData/Day+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Day+CoreDataProperties.swift"; path = "Notifisor/CoreData/Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00FF9FF828FFFFFB0079825A /* Month + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month + extension.swift"; sourceTree = "<group>"; };
 		6C316A1C28F6956D006A7473 /* Notifisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C316A1F28F6956D006A7473 /* NotifisorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifisorApp.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		6C316A1328F6956D006A7473 = {
 			isa = PBXGroup;
 			children = (
+				00E08A982901134B0008D743 /* Day+CoreDataClass.swift */,
+				00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */,
 				00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */,
 				00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */,
 				6C316A1E28F6956D006A7473 /* Notifisor */,
@@ -333,6 +339,7 @@
 				6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */,
 				00DAAD3C290002C300BCE729 /* Month+CoreDataClass.swift in Sources */,
 				0032950928F83573002376DD /* FulfillmentView.swift in Sources */,
+				00E08A9B2901134B0008D743 /* Day+CoreDataProperties.swift in Sources */,
 				00A4F55628FE9581001F4508 /* DTO.xcdatamodeld in Sources */,
 				0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */,
 				6CE5774928F8010C00A4CF7A /* Date + extension.swift in Sources */,
@@ -350,6 +357,7 @@
 				6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */,
 				6CE5774D28F8376200A4CF7A /* CalendarView.swift in Sources */,
 				6CA163E528F7A8E100E018F4 /* Notice.swift in Sources */,
+				00E08A9A2901134B0008D743 /* Day+CoreDataClass.swift in Sources */,
 				0032952A28F98D3A002376DD /* SectionHeaderText.swift in Sources */,
 				6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */,
 				00A4F55828FE9A41001F4508 /* PersistenceController.swift in Sources */,
