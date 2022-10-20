@@ -43,3 +43,14 @@ extension Day {
 extension Day : Identifiable {
 
 }
+
+extension Day: Comparable {
+    public static func <(lhs: Day, rhs: Day) -> Bool {
+        guard let lhsDate = lhs.date,
+              let rhsDate = rhs.date
+        else {
+            fatalError("dates are invalid")
+        }
+        return lhsDate < rhsDate
+    }
+}
