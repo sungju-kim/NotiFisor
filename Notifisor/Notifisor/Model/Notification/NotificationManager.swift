@@ -8,17 +8,18 @@
 import Foundation
 import UserNotifications
 
-struct NotificationManager {
-    let notiCenter = UNUserNotificationCenter.current()
-    let content: UNMutableNotificationContent = {
+final class NotificationManager: ObservableObject {
+    static let shared = NotificationManager()
+
+    private let notiCenter = UNUserNotificationCenter.current()
+    private var content: UNMutableNotificationContent = {
         let content = UNMutableNotificationContent()
-        content.title = "알림 제목"
-        content.body = "알림 내용"
+        content.title = "오늘 일정 마무리 하셨나요?"
         content.sound = .default
         return content
     }()
 
-    init() {
+    private init() {
         requestAuthrization()
         notiCenter.removeAllDeliveredNotifications()
     }
@@ -35,13 +36,16 @@ struct NotificationManager {
         }
     }
 
-    func createRequest(_ identifier: String, at date: Date?) {
+    func createRequest(_ identifier: String, body: String, at date: Date?, weekday: Int) {
         guard let date = date else { return }
 
-        let dateComponents = Calendar.current.dateComponents([.weekday, .hour, .minute], from: date)
+        var dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+        dateComponents.weekday = weekday
+        dateComponents.timeZone = .current
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
                                                     repeats: true)
+        content.body = body
 
         let request = UNNotificationRequest(identifier: identifier,
                                             content: content,
@@ -54,7 +58,7 @@ struct NotificationManager {
         }
     }
 
-    func deleteRequest(_ identifiers: [String]) {
-        notiCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
+    func deleteRequest(_ identifier: String) {
+        notiCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
     }
 }
