@@ -10,11 +10,14 @@ import SwiftUI
 struct NoticeEditView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) private var dismiss
-    // ViewModel Import 후 변경예정
+    @Environment(\.calendar) private var calendar
+    @EnvironmentObject private var notificationManager: NotificationManager
+
     @State var text: String = ""
     @State var per: NumbersOnly = NumbersOnly()
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
+    @State var repeats: [Repeat] = []
 
     var body: some View {
         NavigationView {
@@ -70,11 +73,19 @@ struct NoticeEditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         addNotice(text: text, per: per, selecedUnit: selectedUnit, date: date)
+                        addNotification()
                         saveContext()
                         dismiss()
                     }
                 }
             }
+        }
+    }
+
+    func addNotification() {
+        let repeats = repeats.compactMap { $0.toInt }
+        repeats.forEach {
+            notificationManager.createRequest("\(text) \(date)-\($0)", body: "\(text) \(per)\(selectedUnit)", at: date, weekday: $0)
         }
     }
 
