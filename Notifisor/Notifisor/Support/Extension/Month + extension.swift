@@ -29,6 +29,7 @@ extension Month {
 
         do {
             try context.save()
+            print("success saving 12 month")
         } catch {
             print("error: fail at saving 12 month")
         }
