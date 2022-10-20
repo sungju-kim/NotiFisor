@@ -39,6 +39,8 @@ struct CalendarView: View {
                         } label: {
                             Image(systemName: "chevron.left")
                         }
+                        .disabled(isStartMonth())
+
 
                         Text(DateFormatter.monthAndYear.string(from: month.first?.date ?? Date()))
                             .font(.title)
@@ -48,6 +50,7 @@ struct CalendarView: View {
                         } label: {
                             Image(systemName: "chevron.right")
                         }
+                        .disabled(isCurrentMonth())
 
                     }
                 }
@@ -67,6 +70,23 @@ struct CalendarView: View {
             .date(byAdding: .month, value: move, to: currentDate) ?? Date()
         month.nsPredicate = NSPredicate(format: "date == %@", argumentArray: [movedDate])
     }
+
+    private func isCurrentMonth() -> Bool {
+        let presentDate = month.first?.date ?? Date()
+        let componentsOfPresent = calendar.dateComponents([.year, .month], from: presentDate)
+        let nowComponents = calendar.dateComponents([.year, .month], from: Date.now)
+        return componentsOfPresent == nowComponents
+    }
+
+    //MARK: - 사용자가 이 앱을 다운로드한 날이 2022년 8월이라고 가정
+    private func isStartMonth() -> Bool {
+        let startDate =  calendar.generateMonthDate(2022, 8)
+        let startComponents = calendar.dateComponents([.year, .month], from: startDate)
+        let presentDate = month.first?.date ?? Date()
+        let presentComponents = calendar.dateComponents([.year, .month], from: presentDate)
+        return startComponents == presentComponents
+    }
+
 }
 
 struct CalendarView_Previews: PreviewProvider {
