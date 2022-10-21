@@ -14,7 +14,7 @@
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="Int"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noticeTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="repeats" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="repeats" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="notices" inverseEntity="Day"/>
