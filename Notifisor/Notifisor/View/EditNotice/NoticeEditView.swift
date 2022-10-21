@@ -17,7 +17,19 @@ struct NoticeEditView: View {
     @State var per: NumbersOnly = NumbersOnly()
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
-    @State var repeats: [Repeat] = []
+    @State var repeats: [RepeatDay] = [
+        RepeatDay(weekDay: .everySunday),
+        RepeatDay(weekDay: .everyMonday),
+        RepeatDay(weekDay: .everyTuesday),
+        RepeatDay(weekDay: .everyWednesday),
+        RepeatDay(weekDay: .everyThursday),
+        RepeatDay(weekDay: .everyFriday),
+        RepeatDay(weekDay: .everySaturday)
+    ]
+
+    private var selectedDays: [Int] {
+        return repeats.filter { $0.isSelected }.map { $0.toInt }
+    }
 
     var body: some View {
         NavigationView {
@@ -59,7 +71,7 @@ struct NoticeEditView: View {
                 }
                 
                 Section {
-                    RepeatSectionView()
+                    RepeatSectionView(days: $repeats)
                 } header: {
                     SectionHeaderText(text: "반복")
                 }
@@ -72,7 +84,7 @@ struct NoticeEditView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        addNotice(text: text, per: per, selecedUnit: selectedUnit, date: date)
+                        addNotice(text: text, per: per, selecedUnit: selectedUnit, date: date, repeats: selectedDays)
                         addNotification()
                         saveContext()
                         dismiss()
@@ -81,21 +93,21 @@ struct NoticeEditView: View {
             }
         }
     }
-
+    //MARK: - selectedDays == [-1] 이면, 단발성 알림
     func addNotification() {
-        let repeats = repeats.compactMap { $0.toInt }
-        repeats.forEach {
+        selectedDays.forEach {
             notificationManager.createRequest("\(text) \(date)-\($0)", body: "\(text) \(per)\(selectedUnit)", at: date, weekday: $0)
         }
     }
 
-    func addNotice(text: String, per: NumbersOnly, selecedUnit: Unit, date: Date) {
+    func addNotice(text: String, per: NumbersOnly, selecedUnit: Unit, date: Date, repeats: [Int]) {
         let newNotice = Notice(context: managedObjectContext)
 
         newNotice.title = text
         newNotice.amount = Int64(per.value) ?? 1
         newNotice.unit = selectedUnit.text
         newNotice.noticeTime = date
+        newNotice.repeats = repeats
     }
 
     func saveContext() {

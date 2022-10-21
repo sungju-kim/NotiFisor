@@ -8,28 +8,21 @@
 import SwiftUI
 
 struct RepeatSectionCell: View {
-    @State var isSelected: Bool = false
-    let title: String
-    
+    @Binding var repeatDay: RepeatDay
+
     var body: some View {
         Button {
-            isSelected.toggle()
+            repeatDay.isSelected.toggle()
         } label: {
             HStack {
-                Text(title)
+                Text(repeatDay.weekDay.rawValue)
                     .foregroundColor(.black)
                 Spacer()
-                if isSelected {
+                if repeatDay.isSelected {
                     Image(systemName: "checkmark")
                         .tint(.black)
                 }
             }
         }
-    }
-}
-
-struct RepeatSectionCell_Previews: PreviewProvider {
-    static var previews: some View {
-        RepeatSectionView()
     }
 }
