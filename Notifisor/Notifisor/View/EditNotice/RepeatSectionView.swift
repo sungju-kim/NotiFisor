@@ -8,19 +8,15 @@
 import SwiftUI
 
 struct RepeatSectionView: View {
-    @State var items: [Repeat] = Repeat.allCases
+    @Binding var days: [RepeatDay]
     
     var body: some View {
         List {
-            ForEach(items, id: \.self) {
-                RepeatSectionCell(title: $0.rawValue)
+            ForEach(0..<days.count) { index in
+                HStack {
+                    RepeatSectionCell(repeatDay: $days[index])
+                }
             }
         }
-    }
-}
-
-struct RepeatSectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        RepeatSectionView()
     }
 }
