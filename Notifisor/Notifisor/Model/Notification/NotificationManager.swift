@@ -22,6 +22,7 @@ final class NotificationManager: ObservableObject {
     private init() {
         requestAuthrization()
         notiCenter.removeAllDeliveredNotifications()
+        notiCenter.removeAllPendingNotificationRequests()
     }
 
     func requestAuthrization() {
@@ -36,15 +37,15 @@ final class NotificationManager: ObservableObject {
         }
     }
 
-    func createRequest(_ identifier: String, body: String, at date: Date?, weekday: Int) {
+    func createRequest(_ identifier: String, body: String, at date: Date?, weekday: Int? = nil) {
         guard let date = date else { return }
-
-        var dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+        var key: Set<Calendar.Component> = (weekday == nil) ? [.year, .month, .day, .hour, .minute] : [.hour, .minute]
+        var dateComponents = Calendar.current.dateComponents(key, from: date)
         dateComponents.weekday = weekday
         dateComponents.timeZone = .current
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents,
-                                                    repeats: true)
+                                                    repeats: weekday != nil)
         content.body = body
 
         let request = UNNotificationRequest(identifier: identifier,
