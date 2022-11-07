@@ -93,10 +93,21 @@ struct NoticeEditView: View {
             }
         }
     }
-    //MARK: - selectedDays == [-1] 이면, 단발성 알림
+
     func addNotification() {
-        selectedDays.forEach {
-            notificationManager.createRequest("\(text) \(date)-\($0)", body: "\(text) \(per)\(selectedUnit)", at: date, weekday: $0)
+        //단발성 알림
+        if selectedDays.isEmpty {
+            notificationManager.createRequest("\(text) \(date)-\(0)",
+                                              body: "\(text) \(per)\(selectedUnit)",
+                                              at: date)
+        }
+        // 반복 알림
+        else {
+            selectedDays.forEach {
+                notificationManager.createRequest("\(text) \(date)-\($0)",
+                                                  body: "\(text) \(per)\(selectedUnit)",
+                                                  at: date, weekday: $0)
+            }
         }
     }
 
