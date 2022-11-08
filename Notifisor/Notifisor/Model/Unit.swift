@@ -7,12 +7,17 @@
 
 import Foundation
 
-enum Unit: String, CaseIterable {
-    case hour
-    case minute
-    case km
-    case times
+@objc
+public enum Unit: Int16 {
 
+    case hour = 0
+    case minute = 1
+    case km = 2
+    case times = 3
+
+}
+
+extension Unit: CaseIterable {
     var text: String {
         switch self {
         case .hour:
