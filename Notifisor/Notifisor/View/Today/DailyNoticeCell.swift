@@ -9,25 +9,36 @@ import SwiftUI
 
 struct DailyNoticeCell: View {
     @Environment(\.managedObjectContext) var managedObjectContext
-
     @ObservedObject var notice: Notice
+    @State private var isShowEdieSheet = false
+
     var body: some View {
-        VStack(alignment: .trailing, spacing: 40) {
-            HStack {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
                 Text(notice.title ?? "")
                     .font(.title)
 
-                Spacer()
+                HStack {
+                    Text(notice.noticeTime ?? Date.now , format: .dateTime.hour().minute())
+                        .foregroundStyle(.secondary)
 
-                Text("\(notice.amount)\(notice.unit ?? "")")
+                    Text("알림 예정")
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.top, 8)
             }
 
-            HStack {
-                Text(notice.noticeTime ?? Date.now , format: .dateTime.hour().minute())
-                    .foregroundStyle(.secondary)
+            Spacer()
 
-                Text("알림 예정")
-                    .foregroundStyle(.secondary)
+            Menu {
+                Button("완료", action: finishJob)
+                Button("수정", action: editNotice)
+                Button("삭제", role: .destructive, action: deleteNotice)
+            } label: {
+                Image(systemName: "ellipsis")
+                    .rotationEffect(.degrees(90), anchor: .top)
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(.secondary)
             }
         }
         .padding()
@@ -35,17 +46,31 @@ struct DailyNoticeCell: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .background(notice.isDone ? .yellow : Color(.systemGray5))
         .shadow(radius: 1, x: 5, y: 5)
-        .onTapGesture {
-            notice.isDone.toggle()
-            saveContext()
+        .sheet(isPresented: $isShowEdieSheet) {
+            NoticeEditView(notice)
         }
+        
+    }
+
+    private func finishJob() {
+        notice.isDone.toggle()
+        saveContext()
+    }
+
+    private func editNotice() {
+        isShowEdieSheet = true
+    }
+
+    private func deleteNotice() {
+        managedObjectContext.delete(notice)
+        saveContext()
     }
 
     func saveContext() {
         do {
             try managedObjectContext.save()
         } catch {
-            print("error")
+            print("Saving context got errored --> \(#file)")
         }
     }
 }
