@@ -27,6 +27,9 @@ struct NoticeEditView: View {
         RepeatDay(weekDay: .everySaturday)
     ]
 
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isAmountFocused :Bool
+
     let isAddSheet: Bool
     @ObservedObject var notice: Notice
 
@@ -44,6 +47,10 @@ struct NoticeEditView: View {
             Form {
                 Section {
                     TextField("일정을 입력해주세요", text: $text)
+                        .focused($isTitleFocused)
+                        .onSubmit {
+                            isAmountFocused = true
+                        }
                 } header: {
                     SectionHeaderText(text: "할 일")
                 }
@@ -54,6 +61,7 @@ struct NoticeEditView: View {
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 200)
+                            .focused($isAmountFocused)
 
                         Divider()
 
@@ -109,6 +117,7 @@ struct NoticeEditView: View {
                 }
             }
             .onAppear {
+                //MARK: - Notice 편집
                 if !isAddSheet {
                     self.text = notice.title ?? ""
                     self.amount = NumbersOnly(value: String(notice.amount))
@@ -118,6 +127,11 @@ struct NoticeEditView: View {
                         repeatWeekday.forEach { weekday in
                             repeats[weekday-1].isSelected = true
                         }
+                    }
+                //MARK: - Notice 추가
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                        self.isTitleFocused = true
                     }
                 }
             }
