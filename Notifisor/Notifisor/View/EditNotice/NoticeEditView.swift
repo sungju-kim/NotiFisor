@@ -27,8 +27,11 @@ struct NoticeEditView: View {
         RepeatDay(weekDay: .everySaturday)
     ]
 
-    @FocusState private var isTitleFocused: Bool
-    @FocusState private var isAmountFocused :Bool
+    @FocusState private var checkoutInFocus: CheckoutFocusable?
+    enum CheckoutFocusable: Hashable {
+      case title
+      case amount
+    }
 
     let isAddSheet: Bool
     @ObservedObject var notice: Notice
@@ -47,10 +50,8 @@ struct NoticeEditView: View {
             Form {
                 Section {
                     TextField("일정을 입력해주세요", text: $text)
-                        .focused($isTitleFocused)
-                        .onSubmit {
-                            isAmountFocused = true
-                        }
+                        .focused($checkoutInFocus, equals: .title)
+
                 } header: {
                     SectionHeaderText(text: "할 일")
                 }
@@ -61,7 +62,7 @@ struct NoticeEditView: View {
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 200)
-                            .focused($isAmountFocused)
+                            .focused($checkoutInFocus, equals: .amount)
 
                         Divider()
 
@@ -131,8 +132,13 @@ struct NoticeEditView: View {
                 //MARK: - Notice 추가
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                        self.isTitleFocused = true
+                        self.checkoutInFocus = .title
                     }
+                }
+            }
+            .onSubmit {
+                if checkoutInFocus == .title {
+                    checkoutInFocus = .amount
                 }
             }
         }
@@ -181,7 +187,6 @@ struct NoticeEditView: View {
             let errorMessage: String = isAddSheet ? "adding a Notice" : "edit a Notice"
             print("Error with \(errorMessage)")
         }
-//        PersistenceController.shared.saveContext()
     }
 }
 
