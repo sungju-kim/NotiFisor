@@ -13,73 +13,72 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    @FetchRequest(entity: Notice.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)])
-    var notices: FetchedResults<Notice>
+    @FetchRequest(
+        entity: Notice.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)]
+    )
+    var notices: FetchedResults<Notice> {
+        didSet {
+            try! managedObjectContext.save()
+        }
+    }
 
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack(spacing: 20) {
-                    NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
-                    NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
-
-                    ScrollView {
-                        VStack(spacing: 30) {
-                            ForEach(notices) { notice in
-                                DailyNoticeCell(notice: notice)
-                            }
-                        }
-                        .padding(.horizontal)
+            ScrollView {
+                VStack(spacing: 30) {
+                    ForEach(notices) { notice in
+                        DailyNoticeCell(notice: notice)
                     }
                 }
-                .background(Color(.systemGray5))
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Button {
-                            showSheet.toggle()
-                        } label: {
-                            ColoredImage(source: "plus")
-                        }
-                        .sheet(isPresented: $showSheet) {
-                            NoticeEditView()
-                        }
-
-                        Button {
-                            Month.add12MonthEntity()
-                        } label: {
-                            ColoredImage(source: "12.square")
-                            Text("add monthes")
-                        }
-                    }
-
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button {
-                            withAnimation {
-                                showMenu.toggle()
-                            }
-                        } label: {
-                            ColoredImage(source: "list.bullet")
-                        }
-                    }
-                }
-
+                .padding(.horizontal)
+            }
+            .frame(maxWidth: .infinity)
+            .overlay {
                 if showMenu {
-                    let tap = TapGesture()
-                        .onEnded { tap in
-                            withAnimation {
-                                showMenu.toggle()
-                            }
-                        }
+                    OpaqueBlackView(showMenu: $showMenu)
+                }
+            }
+            .background(Color(.systemGray5))
+            .overlay {
+                NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
+                NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        ColoredImage(source: "plus")
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        NoticeEditView()
+                    }
+                }
 
-                    Color.black.opacity(0.5)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .ignoresSafeArea()
-                        .gesture(tap)
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button {
+                        withAnimation {
+                            showMenu.toggle()
+                        }
+                    } label: {
+                        ColoredImage(source: "list.bullet")
+                    }
                 }
             }
         }
     }
 }
 
+
+struct DailyNoticeView_Previews: PreviewProvider {
+    @State static var showMenu = false
+    @State static var showHistory = false
+    @State static var showProfile = false
+    
+    static var previews: some View {
+        DailyNoticeView(showMenu: $showMenu, showHistory: $showHistory, showProfile: $showProfile)
+    }
+}
