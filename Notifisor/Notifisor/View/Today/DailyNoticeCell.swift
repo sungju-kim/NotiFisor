@@ -50,3 +50,11 @@ struct DailyNoticeCell: View {
     }
 }
 
+struct DailyNoticeCell_Previews: PreviewProvider {
+    @FetchRequest(entity: Notice.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)])
+    static var notices: FetchedResults<Notice>
+
+    static var previews: some View {
+        DailyNoticeCell(notice: notices[0])
+    }
+}
