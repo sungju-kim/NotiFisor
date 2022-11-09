@@ -45,13 +45,6 @@ struct DailyNoticeView: View {
                         .sheet(isPresented: $showSheet) {
                             NoticeEditView()
                         }
-
-                        Button {
-                            Month.add12MonthEntity()
-                        } label: {
-                            ColoredImage(source: "12.square")
-                            Text("add monthes")
-                        }
                     }
 
                     ToolbarItemGroup(placement: .navigationBarLeading) {
