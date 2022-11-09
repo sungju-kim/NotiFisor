@@ -39,7 +39,7 @@ final class NotificationManager: ObservableObject {
 
     func createRequest(_ identifier: String, body: String, at date: Date?, weekday: Int? = nil) {
         guard let date = date else { return }
-        var key: Set<Calendar.Component> = (weekday == nil) ? [.year, .month, .day, .hour, .minute] : [.hour, .minute]
+        let key: Set<Calendar.Component> = (weekday == nil) ? [.year, .month, .day, .hour, .minute] : [.hour, .minute]
         var dateComponents = Calendar.current.dateComponents(key, from: date)
         dateComponents.weekday = weekday
         dateComponents.timeZone = .current
