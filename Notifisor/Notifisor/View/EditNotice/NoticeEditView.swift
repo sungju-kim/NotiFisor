@@ -105,13 +105,10 @@ struct NoticeEditView: View {
                     Button("Done") {
                         //MARK: - Notice 추가
                         if isAddSheet {
-                            addNotice(text: text, amount: amount, selecedUnit: selectedUnit, date: date, repeats: selectedDays)
                             addNotification()
                             dismiss()
                         //MARK: - Notice 편집
                         } else {
-                            //TODO: - NoticeTime 변화에 따라 Notification time 수정
-                            editNotice(text: text, amount: amount, selecedUnit: selectedUnit, date: date, repeats: selectedDays)
                             dismiss()
                         }
                     }
@@ -120,15 +117,7 @@ struct NoticeEditView: View {
             .onAppear {
                 //MARK: - Notice 편집
                 if !isAddSheet {
-                    self.text = notice.title ?? ""
-                    self.amount = NumbersOnly(value: String(notice.amount))
-                    self.selectedUnit = notice.unit
-                    self.date = notice.noticeTime ?? Date()
-                    if let repeatWeekday = notice.repeats {
-                        repeatWeekday.forEach { weekday in
-                            repeats[weekday-1].isSelected = true
-                        }
-                    }
+
                 //MARK: - Notice 추가
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
@@ -161,33 +150,6 @@ struct NoticeEditView: View {
         }
     }
 
-    private func addNotice(text: String, amount: NumbersOnly, selecedUnit: Unit, date: Date, repeats: [Int]) {
-        let newNotice = Notice(context: managedObjectContext)
-        newNotice.title = text
-        newNotice.amount = Int64(amount.value) ?? 1
-        newNotice.unit = selectedUnit
-        newNotice.noticeTime = date
-        newNotice.repeats = repeats
-        saveContext()
-    }
-
-    private func editNotice(text: String, amount: NumbersOnly, selecedUnit: Unit, date: Date, repeats: [Int]) {
-        notice.title = text
-        notice.amount = Int64(amount.value) ?? 1
-        notice.unit = selectedUnit
-        notice.noticeTime = date
-        notice.repeats = repeats
-        saveContext()
-    }
-
-    func saveContext() {
-        do {
-            try managedObjectContext.save()
-        } catch {
-            let errorMessage: String = isAddSheet ? "adding a Notice" : "edit a Notice"
-            print("Error with \(errorMessage)")
-        }
-    }
 }
 
 struct NoticeEditView_Previews: PreviewProvider {

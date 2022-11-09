@@ -6,14 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-@objc
-public enum Unit: Int16 {
-
-    case hour = 0
-    case minute = 1
-    case km = 2
-    case times = 3
+enum Unit: String {
+    case hour
+    case minute
+    case km
+    case times
 
 }
 

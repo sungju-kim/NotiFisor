@@ -7,26 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00106531290176FB00100B88 /* Day + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00106530290176FB00100B88 /* Day + extension.swift */; };
 		0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950428F7EC53002376DD /* RepeatSectionCell.swift */; };
 		0032950728F7EE24002376DD /* RepeatSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950628F7EE24002376DD /* RepeatSectionView.swift */; };
-		0032950928F83573002376DD /* FulfillmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032950828F83573002376DD /* FulfillmentView.swift */; };
 		0032952528F9024C002376DD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952428F9024C002376DD /* MenuView.swift */; };
 		0032952828F98554002376DD /* ColoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952728F98554002376DD /* ColoredImage.swift */; };
 		0032952A28F98D3A002376DD /* SectionHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952928F98D3A002376DD /* SectionHeaderText.swift */; };
-		00A4F55628FE9581001F4508 /* DTO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00A4F55428FE9581001F4508 /* DTO.xcdatamodeld */; };
-		00A4F55828FE9A41001F4508 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4F55728FE9A41001F4508 /* PersistenceController.swift */; };
 		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
 		00D9DB4428FD2B060030A2C7 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */; };
-		00DAAD3C290002C300BCE729 /* Month+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */; };
-		00DAAD3D290002C300BCE729 /* Month+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */; };
-		00E08A9A2901134B0008D743 /* Day+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E08A982901134B0008D743 /* Day+CoreDataClass.swift */; };
-		00E08A9B2901134B0008D743 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */; };
-		00F2B0AE291A900300176D8E /* Notice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0AC291A900300176D8E /* Notice+CoreDataClass.swift */; };
-		00F2B0AF291A900300176D8E /* Notice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0AD291A900300176D8E /* Notice+CoreDataProperties.swift */; };
 		00F2B0B1291AB8E200176D8E /* OpaqueBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */; };
 		00F2B0B4291B7FBE00176D8E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 00F2B0B3291B7FBE00176D8E /* Realm */; };
 		00F2B0B6291B7FBE00176D8E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00F2B0B5291B7FBE00176D8E /* RealmSwift */; };
+		00F2B0B8291B82A800176D8E /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0B7291B82A800176D8E /* Notice.swift */; };
+		00F2B0BA291B9E7A00176D8E /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0B9291B9E7A00176D8E /* Weekday.swift */; };
+		00F2B0BC291B9E8500176D8E /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0BB291B9E8500176D8E /* Day.swift */; };
 		6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A1F28F6956D006A7473 /* NotifisorApp.swift */; };
 		6C316A2228F6956D006A7473 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C316A2128F6956D006A7473 /* ContentView.swift */; };
 		6C316A2428F6956F006A7473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C316A2328F6956F006A7473 /* Assets.xcassets */; };
@@ -35,7 +28,6 @@
 		6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */; };
 		6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E028F7A8B200E018F4 /* DayCell.swift */; };
 		6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */; };
-		6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */; };
 		6CA163EB28F7B63100E018F4 /* NoticeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */; };
 		6CAA77AF290292A600649ECE /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA77AE290292A600649ECE /* MonthView.swift */; };
 		6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774028F7E8A400A4CF7A /* Unit.swift */; };
@@ -49,24 +41,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00106530290176FB00100B88 /* Day + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day + extension.swift"; sourceTree = "<group>"; };
 		0032950428F7EC53002376DD /* RepeatSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatSectionCell.swift; sourceTree = "<group>"; };
 		0032950628F7EE24002376DD /* RepeatSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatSectionView.swift; sourceTree = "<group>"; };
-		0032950828F83573002376DD /* FulfillmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FulfillmentView.swift; sourceTree = "<group>"; };
 		0032952428F9024C002376DD /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		0032952728F98554002376DD /* ColoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredImage.swift; sourceTree = "<group>"; };
 		0032952928F98D3A002376DD /* SectionHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderText.swift; sourceTree = "<group>"; };
-		00A4F55528FE9581001F4508 /* DTO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DTO.xcdatamodel; sourceTree = "<group>"; };
-		00A4F55728FE9A41001F4508 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
 		00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
-		00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataClass.swift"; path = "Notifisor/CoreData/Month+CoreDataClass.swift"; sourceTree = "<group>"; };
-		00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Month+CoreDataProperties.swift"; path = "Notifisor/CoreData/Month+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		00E08A982901134B0008D743 /* Day+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Day+CoreDataClass.swift"; path = "Notifisor/CoreData/Day+CoreDataClass.swift"; sourceTree = "<group>"; };
-		00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Day+CoreDataProperties.swift"; path = "Notifisor/CoreData/Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		00F2B0AC291A900300176D8E /* Notice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notice+CoreDataClass.swift"; path = "Notifisor/Notice+CoreDataClass.swift"; sourceTree = "<group>"; };
-		00F2B0AD291A900300176D8E /* Notice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notice+CoreDataProperties.swift"; path = "Notifisor/Notice+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueBlackView.swift; sourceTree = "<group>"; };
+		00F2B0B7291B82A800176D8E /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		00F2B0B9291B9E7A00176D8E /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		00F2B0BB291B9E8500176D8E /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		6C316A1C28F6956D006A7473 /* Notifisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notifisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C316A1F28F6956D006A7473 /* NotifisorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifisorApp.swift; sourceTree = "<group>"; };
 		6C316A2128F6956D006A7473 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +61,6 @@
 		6CA163DE28F7A89F00E018F4 /* DailyNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeCell.swift; sourceTree = "<group>"; };
 		6CA163E028F7A8B200E018F4 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		6CA163E228F7A8CD00E018F4 /* HistoryNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNoticeView.swift; sourceTree = "<group>"; };
-		6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeEditView.swift; sourceTree = "<group>"; };
 		6CAA77AE290292A600649ECE /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		6CE5774028F7E8A400A4CF7A /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -110,24 +94,9 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		00A4F55328FE955B001F4508 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				00A4F55428FE9581001F4508 /* DTO.xcdatamodeld */,
-				00A4F55728FE9A41001F4508 /* PersistenceController.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		6C316A1328F6956D006A7473 = {
 			isa = PBXGroup;
 			children = (
-				00F2B0AC291A900300176D8E /* Notice+CoreDataClass.swift */,
-				00F2B0AD291A900300176D8E /* Notice+CoreDataProperties.swift */,
-				00E08A982901134B0008D743 /* Day+CoreDataClass.swift */,
-				00E08A992901134B0008D743 /* Day+CoreDataProperties.swift */,
-				00DAAD3A290002C300BCE729 /* Month+CoreDataClass.swift */,
-				00DAAD3B290002C300BCE729 /* Month+CoreDataProperties.swift */,
 				6C316A1E28F6956D006A7473 /* Notifisor */,
 				6C316A1D28F6956D006A7473 /* Products */,
 			);
@@ -144,10 +113,8 @@
 		6C316A1E28F6956D006A7473 /* Notifisor */ = {
 			isa = PBXGroup;
 			children = (
-				00A4F55328FE955B001F4508 /* CoreData */,
 				6CE5774628F800FB00A4CF7A /* Support */,
 				6C316A2D28F695F8006A7473 /* Model */,
-				6C316A2E28F6960B006A7473 /* ViewModel */,
 				6C316A2F28F69611006A7473 /* View */,
 				6C316A3028F6962D006A7473 /* Main */,
 				6C316A1F28F6956D006A7473 /* NotifisorApp.swift */,
@@ -171,17 +138,12 @@
 				6C6238F328FFDDAE000EF7FD /* Notification */,
 				6CE5774028F7E8A400A4CF7A /* Unit.swift */,
 				6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */,
+				00F2B0B7291B82A800176D8E /* Notice.swift */,
+				00F2B0BB291B9E8500176D8E /* Day.swift */,
+				00F2B0B9291B9E7A00176D8E /* Weekday.swift */,
 				6CE5774428F7EB5F00A4CF7A /* RepeatDay.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		6C316A2E28F6960B006A7473 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6CA163E628F7A8F400E018F4 /* TodayViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6C316A2F28F69611006A7473 /* View */ = {
@@ -219,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				6CA163E028F7A8B200E018F4 /* DayCell.swift */,
-				0032950828F83573002376DD /* FulfillmentView.swift */,
 				6CE5774C28F8376200A4CF7A /* CalendarView.swift */,
 				6CAA77AE290292A600649ECE /* MonthView.swift */,
 				00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */,
@@ -268,7 +229,6 @@
 			children = (
 				6CE5774828F8010C00A4CF7A /* Date + extension.swift */,
 				6CE5775028F94E6300A4CF7A /* Calendar + extension.swift */,
-				00106530290176FB00100B88 /* Day + extension.swift */,
 				6CE5775228F94EC900A4CF7A /* DateFormatter + extension.swift */,
 			);
 			path = Extension;
@@ -357,12 +317,7 @@
 				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
 				0032952828F98554002376DD /* ColoredImage.swift in Sources */,
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
-				6CA163E728F7A8F400E018F4 /* TodayViewModel.swift in Sources */,
 				6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */,
-				00DAAD3C290002C300BCE729 /* Month+CoreDataClass.swift in Sources */,
-				0032950928F83573002376DD /* FulfillmentView.swift in Sources */,
-				00E08A9B2901134B0008D743 /* Day+CoreDataProperties.swift in Sources */,
-				00A4F55628FE9581001F4508 /* DTO.xcdatamodeld in Sources */,
 				0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */,
 				6CE5774928F8010C00A4CF7A /* Date + extension.swift in Sources */,
 				6CE5775128F94E6300A4CF7A /* Calendar + extension.swift in Sources */,
@@ -370,20 +325,17 @@
 				6C6238F528FFDDC4000EF7FD /* NotificationManager.swift in Sources */,
 				6CE5774528F7EB5F00A4CF7A /* RepeatDay.swift in Sources */,
 				6CA163EB28F7B63100E018F4 /* NoticeEditView.swift in Sources */,
-				00DAAD3D290002C300BCE729 /* Month+CoreDataProperties.swift in Sources */,
 				0032950728F7EE24002376DD /* RepeatSectionView.swift in Sources */,
+				00F2B0B8291B82A800176D8E /* Notice.swift in Sources */,
 				6CA163E328F7A8CD00E018F4 /* HistoryNoticeView.swift in Sources */,
 				6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */,
+				00F2B0BC291B9E8500176D8E /* Day.swift in Sources */,
 				0032952528F9024C002376DD /* MenuView.swift in Sources */,
-				00F2B0AE291A900300176D8E /* Notice+CoreDataClass.swift in Sources */,
-				00106531290176FB00100B88 /* Day + extension.swift in Sources */,
 				6CA163DF28F7A89F00E018F4 /* DailyNoticeCell.swift in Sources */,
+				00F2B0BA291B9E7A00176D8E /* Weekday.swift in Sources */,
 				6CE5774D28F8376200A4CF7A /* CalendarView.swift in Sources */,
-				00E08A9A2901134B0008D743 /* Day+CoreDataClass.swift in Sources */,
 				0032952A28F98D3A002376DD /* SectionHeaderText.swift in Sources */,
 				6CA163E128F7A8B200E018F4 /* DayCell.swift in Sources */,
-				00F2B0AF291A900300176D8E /* Notice+CoreDataProperties.swift in Sources */,
-				00A4F55828FE9A41001F4508 /* PersistenceController.swift in Sources */,
 				6C316A2028F6956D006A7473 /* NotifisorApp.swift in Sources */,
 				6CE5775328F94EC900A4CF7A /* DateFormatter + extension.swift in Sources */,
 			);
@@ -622,19 +574,6 @@
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		00A4F55428FE9581001F4508 /* DTO.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				00A4F55528FE9581001F4508 /* DTO.xcdatamodel */,
-			);
-			currentVersion = 00A4F55528FE9581001F4508 /* DTO.xcdatamodel */;
-			path = DTO.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6C316A1428F6956D006A7473 /* Project object */;
 }

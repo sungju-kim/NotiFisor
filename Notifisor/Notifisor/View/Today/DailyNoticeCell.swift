@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DailyNoticeCell: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
     @ObservedObject var notice: Notice
     @State private var isShowEdieSheet = false
 
@@ -31,9 +30,9 @@ struct DailyNoticeCell: View {
             Spacer()
 
             Menu {
-                Button("완료", action: finishJob)
-                Button("수정", action: editNotice)
-                Button("삭제", role: .destructive, action: deleteNotice)
+                Button("완료", action: {})
+                Button("수정", action: {})
+                Button("삭제", role: .destructive, action: {})
             } label: {
                 Image(systemName: "ellipsis")
                     .rotationEffect(.degrees(90), anchor: .top)
@@ -52,34 +51,5 @@ struct DailyNoticeCell: View {
         
     }
 
-    private func finishJob() {
-        notice.isDone.toggle()
-        saveContext()
-    }
-
-    private func editNotice() {
-        isShowEdieSheet = true
-    }
-
-    private func deleteNotice() {
-        managedObjectContext.delete(notice)
-        saveContext()
-    }
-
-    func saveContext() {
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print("Saving context got errored --> \(#file)")
-        }
-    }
 }
 
-struct DailyNoticeCell_Previews: PreviewProvider {
-    @FetchRequest(entity: Notice.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)])
-    static var notices: FetchedResults<Notice>
-
-    static var previews: some View {
-        DailyNoticeCell(notice: notices[0])
-    }
-}

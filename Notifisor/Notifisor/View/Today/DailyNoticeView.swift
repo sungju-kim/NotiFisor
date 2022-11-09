@@ -13,25 +13,12 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    @FetchRequest(
-        entity: Notice.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Notice.noticeTime, ascending: true)]
-    )
-    var notices: FetchedResults<Notice> {
-        didSet {
-            try! managedObjectContext.save()
-        }
-    }
-
-    @Environment(\.managedObjectContext) var managedObjectContext
-    
+    //weekday
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 30) {
-                    ForEach(notices) { notice in
-                        DailyNoticeCell(notice: notice)
-                    }
+                    //weekday.요일 가져와서 ForEach
                 }
                 .padding(.horizontal)
             }
