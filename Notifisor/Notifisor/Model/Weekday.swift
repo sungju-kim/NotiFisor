@@ -8,12 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class Weekday: Object {
-    @Persisted var sunday: List<Notice>
-    @Persisted var monday: List<Notice>
-    @Persisted var tuesday: List<Notice>
-    @Persisted var wednesday: List<Notice>
-    @Persisted var thursday: List<Notice>
-    @Persisted var friday: List<Notice>
-    @Persisted var saturday: List<Notice>
+final class Weekday: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var id = 0
+    @Persisted var notices: List<Notice>
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NoticeEditView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.dismiss) private var dismiss
     @Environment(\.calendar) private var calendar
     @EnvironmentObject private var notificationManager: NotificationManager
