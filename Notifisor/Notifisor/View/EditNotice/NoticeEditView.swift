@@ -112,6 +112,7 @@ struct NoticeEditView: View {
                             dismiss()
                         //MARK: - Notice 편집
                         } else {
+                            editNotice()
                             dismiss()
                         }
                     }
@@ -167,7 +168,23 @@ struct NoticeEditView: View {
                 notice.amount = Int(amount.value) ?? 0
                 notice.repeats.append(objectsIn: selectedDays)
                 notice.unit = selectedUnit
+                notice.noticeTime = date
                 notificationRepository.realm.add(notice)
+            }
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func editNotice() {
+        do {
+            try notificationRepository.realm.write {
+                notice.thaw()?.title = text
+                notice.thaw()?.amount = Int(amount.value) ?? 0
+                notice.thaw()?.repeats.removeAll()
+                notice.thaw()?.repeats.append(objectsIn: selectedDays)
+                notice.thaw()?.unit = selectedUnit
+                notice.thaw()?.noticeTime = date
             }
         } catch(let error) {
             print(error.localizedDescription)
