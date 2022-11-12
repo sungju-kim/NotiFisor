@@ -105,6 +105,7 @@ struct NoticeEditView: View {
                         //MARK: - Notice 추가
                         if isAddSheet {
                             addNotification()
+                            addNotice()
                             dismiss()
                         //MARK: - Notice 편집
                         } else {
@@ -149,6 +150,20 @@ struct NoticeEditView: View {
         }
     }
 
+    private func addNotice() {
+        do {
+            try notificationRepository.realm.write {
+                let notice = Notice()
+                notice.title = text
+                notice.amount = Int(amount.value) ?? 0
+                notice.repeats.append(objectsIn: selectedDays)
+                notice.unit = selectedUnit
+                notificationRepository.realm.add(notice)
+            }
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 struct NoticeEditView_Previews: PreviewProvider {
