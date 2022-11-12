@@ -5,6 +5,7 @@
 //  Created by YEONGJIN JANG on 2022/10/13.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct DailyNoticeView: View {
@@ -13,12 +14,15 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    //weekday
+    @ObservedResults(Notice.self) var notices
+
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 30) {
-                    //weekday.요일 가져와서 ForEach
+                    ForEach(notices) {
+                        DailyNoticeCell(notice: $0)
+                    }
                 }
                 .padding(.horizontal)
             }
