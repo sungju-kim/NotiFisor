@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-enum Unit: String {
+enum Unit: String, PersistableEnum {
     case hour
     case minute
     case km

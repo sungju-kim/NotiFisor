@@ -15,14 +15,5 @@ final class Notice: Object, ObjectKeyIdentifiable {
     @Persisted var isDone: Bool
     @Persisted var noticeTime: Date
     @Persisted var repeats: List<Int>
-    //TODO: - 지울것 Unit 적용안되고 있음
-    private dynamic var unit = Unit.hour.rawValue
-    var unitEnum: Unit {
-        get {
-            return Unit(rawValue: unit) ?? Unit.hour
-        }
-        set {
-            unit = newValue.rawValue
-        }
-    }
+    @Persisted var unit: Unit
 }
