@@ -35,15 +35,13 @@ struct NoticeEditView: View {
     }
 
     let isAddSheet: Bool
-    @ObservedObject var notice: Notice
 
     private var selectedDays: [Int] {
         return repeats.filter { $0.isSelected }.map { $0.toInt }
     }
 
     init(_ notice: Notice? = nil) {
-        self.isAddSheet = notice == nil ? true : false
-        self.notice = notice ?? Notice()
+        self.isAddSheet = notice == nil
     }
 
     var body: some View {
