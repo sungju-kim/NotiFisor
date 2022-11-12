@@ -15,13 +15,16 @@ struct DailyNoticeView: View {
     @State var showSheet = false
 
     @ObservedResults(Notice.self) var notices
+    @EnvironmentObject private var notificationRepository: NoticeRepository
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 30) {
                     ForEach(notices) {
-                        DailyNoticeCell(notice: $0)
+                        DailyNoticeCell(notice: $0, onDelete: { deleteNotice in
+                            $notices.remove(deleteNotice)
+                        })
                     }
                 }
                 .padding(.horizontal)

@@ -11,6 +11,7 @@ import SwiftUI
 struct DailyNoticeCell: View {
     @ObservedRealmObject var notice: Notice
     @State private var isShowEditSheet = false
+    var onDelete: (Notice) -> Void = { _ in }
 
     var body: some View {
         HStack(alignment: .top) {
@@ -37,13 +38,15 @@ struct DailyNoticeCell: View {
                             notice.thaw()?.isDone.toggle()
                         }
                     } catch(let error) {
-                        print(error)
+                        print(error.localizedDescription)
                     }
                 })
                 Button("수정", action: {
                     isShowEditSheet.toggle()
                 })
-                Button("삭제", role: .destructive, action: {})
+                Button("삭제", role: .destructive, action: {
+                    onDelete(notice)
+                })
             } label: {
                 Image(systemName: "ellipsis")
                     .rotationEffect(.degrees(90), anchor: .top)
