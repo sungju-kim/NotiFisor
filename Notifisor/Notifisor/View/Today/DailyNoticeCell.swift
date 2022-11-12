@@ -14,11 +14,11 @@ struct DailyNoticeCell: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text(notice.title ?? "")
+                Text(notice.title)
                     .font(.title)
 
                 HStack {
-                    Text(notice.noticeTime ?? Date.now , format: .dateTime.hour().minute())
+                    Text(notice.noticeTime, format: .dateTime.hour().minute())
                         .foregroundStyle(.secondary)
 
                     Text("알림 예정")
