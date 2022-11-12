@@ -5,11 +5,12 @@
 //  Created by dale on 2022/10/13.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct DailyNoticeCell: View {
-    @ObservedObject var notice: Notice
-    @State private var isShowEdieSheet = false
+    @ObservedRealmObject var notice: Notice
+    @State private var isShowEditSheet = false
 
     var body: some View {
         HStack(alignment: .top) {
@@ -45,7 +46,7 @@ struct DailyNoticeCell: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .background(notice.isDone ? .yellow : Color(.systemGray5))
         .shadow(radius: 1, x: 5, y: 5)
-        .sheet(isPresented: $isShowEdieSheet) {
+        .sheet(isPresented: $isShowEditSheet) {
             NoticeEditView(notice)
         }
         
