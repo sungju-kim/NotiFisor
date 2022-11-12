@@ -31,7 +31,15 @@ struct DailyNoticeCell: View {
             Spacer()
 
             Menu {
-                Button("완료", action: {})
+                Button("완료", action: {
+                    do {
+                        try NoticeRepository.shared.realm.write {
+                            notice.thaw()?.isDone.toggle()
+                        }
+                    } catch(let error) {
+                        print(error)
+                    }
+                })
                 Button("수정", action: {
                     isShowEditSheet.toggle()
                 })
