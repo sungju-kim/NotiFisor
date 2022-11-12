@@ -5,12 +5,14 @@
 //  Created by dale on 2022/10/13.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct NoticeEditView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.calendar) private var calendar
     @EnvironmentObject private var notificationManager: NotificationManager
+    @EnvironmentObject private var notificationRepository: NoticeRepository
 
     @State var text: String = ""
     @State var amount: NumbersOnly = NumbersOnly()

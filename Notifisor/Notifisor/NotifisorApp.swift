@@ -12,11 +12,13 @@ import CoreData
 @main
 struct NotifisorApp: App {
     let notificationManager = NotificationManager.shared
+    let notificationRepository = NoticeRepository.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(notificationManager)
+                .environmentObject(notificationRepository)
         }
     }
 }

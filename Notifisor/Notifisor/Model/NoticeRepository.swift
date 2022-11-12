@@ -9,9 +9,10 @@ import Foundation
 import RealmSwift
 
 //TODO: - 에러 핸들링
-final class NoticeRepository {
-
+final class NoticeRepository: ObservableObject {
+    static let shared = NoticeRepository()
     let realm: Realm
+    
     init() {
         do {
             self.realm = try Realm()
