@@ -32,7 +32,9 @@ struct DailyNoticeCell: View {
 
             Menu {
                 Button("완료", action: {})
-                Button("수정", action: {})
+                Button("수정", action: {
+                    isShowEditSheet.toggle()
+                })
                 Button("삭제", role: .destructive, action: {})
             } label: {
                 Image(systemName: "ellipsis")

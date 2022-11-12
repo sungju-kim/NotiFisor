@@ -40,8 +40,11 @@ struct NoticeEditView: View {
         return repeats.filter { $0.isSelected }.map { $0.toInt }
     }
 
+    @ObservedRealmObject var notice: Notice
+
     init(_ notice: Notice? = nil) {
         self.isAddSheet = notice == nil
+        self.notice = notice ?? Notice()
     }
 
     var body: some View {
@@ -117,7 +120,13 @@ struct NoticeEditView: View {
             .onAppear {
                 //MARK: - Notice 편집
                 if !isAddSheet {
-
+                    self.text = notice.title
+                    self.amount = NumbersOnly(value: String(notice.amount))
+                    self.selectedUnit = notice.unit
+                    self.date = notice.noticeTime
+                    Array(notice.repeats).forEach { weekday in
+                        repeats[weekday-1].isSelected = true
+                    }
                 //MARK: - Notice 추가
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
