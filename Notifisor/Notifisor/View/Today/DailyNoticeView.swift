@@ -14,17 +14,18 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    @ObservedResults(Notice.self) var notices
-    @EnvironmentObject private var notificationRepository: NoticeRepository
+    @ObservedObject var usecase = DailyNoticeUsecase()
+
+    private var day: Day {
+        return usecase.day ?? Day()
+    }
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 30) {
-                    ForEach(notices) {
-                        DailyNoticeCell(notice: $0, onDelete: { deleteNotice in
-                            $notices.remove(deleteNotice)
-                        })
+                    ForEach(day.notices) {
+                        DailyNoticeCell(notice: $0)
                     }
                 }
                 .padding(.horizontal)

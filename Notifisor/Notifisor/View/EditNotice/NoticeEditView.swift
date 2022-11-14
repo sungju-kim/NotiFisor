@@ -161,19 +161,13 @@ struct NoticeEditView: View {
     }
 
     private func addNotice() {
-        do {
-            try notificationRepository.realm.write {
-                let notice = Notice()
-                notice.title = text
-                notice.amount = Int(amount.value) ?? 0
-                notice.repeats.append(objectsIn: selectedDays)
-                notice.unit = selectedUnit
-                notice.noticeTime = date
-                notificationRepository.realm.add(notice)
-            }
-        } catch(let error) {
-            print(error.localizedDescription)
-        }
+        let notice = Notice()
+        notice.title = text
+        notice.amount = Int(amount.value) ?? 0
+        notice.repeats.append(objectsIn: selectedDays)
+        notice.unit = selectedUnit
+        notice.noticeTime = date
+        notificationRepository.add(notice)
     }
 
     private func editNotice() {

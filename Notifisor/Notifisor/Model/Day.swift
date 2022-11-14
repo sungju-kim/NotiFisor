@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 final class Day: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id = ""
     @Persisted var date: Date
     @Persisted var notices: List<Notice>
     var achievementRate: Double {

@@ -13,7 +13,7 @@ final class NoticeRepository: ObservableObject {
     static let shared = NoticeRepository()
     let realm: Realm
     
-    init() {
+    private init() {
         do {
             self.realm = try Realm()
             for i in 1...7 {
@@ -32,7 +32,7 @@ final class NoticeRepository: ObservableObject {
                 realm.add(object)
                 if let notice = object as? Notice {
                     for i in notice.repeats {
-                        realm.objects(Weekday.self)[i].notices.append(notice)
+                        realm.objects(Weekday.self)[i-1].notices.append(notice)
                     }
                 }
             }
@@ -41,7 +41,7 @@ final class NoticeRepository: ObservableObject {
         }
     }
 
-    func get(_ type: Object.Type, _ id: ObjectId) -> Object? {
+    func get<Element: Object, KeyType>(_ type: Element.Type, _ id: KeyType) -> Object? {
         return realm.object(ofType: type, forPrimaryKey: id)
     }
 
