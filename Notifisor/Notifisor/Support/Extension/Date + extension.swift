@@ -19,4 +19,10 @@ extension Date {
     func split() -> [Int] {
         return [self.get(.year), self.get(.month), self.get(.day)]
     }
+
+    var id: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: self)
+    }
 }

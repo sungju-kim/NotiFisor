@@ -14,10 +14,12 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    @ObservedObject var usecase = DailyNoticeUsecase()
+    @EnvironmentObject private var repository: NoticeRepository
+
+    @ObservedResults(Day.self, filter: NSPredicate(format: "_id == %@", Date.now.id)) var days
 
     private var day: Day {
-        return usecase.day ?? Day()
+        return days.first ?? Day()
     }
 
     var body: some View {
@@ -50,6 +52,9 @@ struct DailyNoticeView: View {
                     }
                     .sheet(isPresented: $showSheet) {
                         NoticeEditView()
+                            .onDisappear {
+                                fetchDay()
+                            }
                     }
                 }
 
@@ -64,6 +69,17 @@ struct DailyNoticeView: View {
                 }
             }
         }
+        .onAppear {
+            fetchDay()
+        }
+    }
+
+    func fetchDay() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let id = formatter.string(from: Date.now)
+        guard let weekday = repository.get(Weekday.self, Date.now.get(.weekday)) as? Weekday else { return }
+        repository.updateInfo(Day.self, ObjectId(), ["_id": id, "date": Date.now, "notices": weekday.notices])
     }
 }
 
