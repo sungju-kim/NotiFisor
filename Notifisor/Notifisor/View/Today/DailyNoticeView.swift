@@ -75,11 +75,9 @@ struct DailyNoticeView: View {
     }
 
     func fetchDay() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let id = formatter.string(from: Date.now)
-        guard let weekday = repository.get(Weekday.self, Date.now.get(.weekday)) as? Weekday else { return }
-        repository.updateInfo(Day.self, ObjectId(), ["_id": id, "date": Date.now, "notices": weekday.notices])
+        let today = Date.now
+        guard let weekday = repository.get(Weekday.self, today.get(.weekday)) as? Weekday else { return }
+        repository.updateInfo(Day.self, ObjectId(), ["_id": today.id, "date": today, "notices": weekday.notices])
     }
 }
 
