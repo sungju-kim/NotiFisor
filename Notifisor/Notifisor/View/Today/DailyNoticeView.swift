@@ -52,9 +52,6 @@ struct DailyNoticeView: View {
                     }
                     .sheet(isPresented: $showSheet) {
                         NoticeEditView()
-                            .onDisappear {
-                                fetchDay()
-                            }
                     }
                 }
 
@@ -69,15 +66,6 @@ struct DailyNoticeView: View {
                 }
             }
         }
-        .onAppear {
-            fetchDay()
-        }
-    }
-
-    func fetchDay() {
-        let today = Date.now
-        guard let weekday = repository.get(Weekday.self, today.get(.weekday)) as? Weekday else { return }
-        repository.updateInfo(Day.self, ObjectId(), ["_id": today.id, "date": today, "notices": weekday.notices])
     }
 }
 
