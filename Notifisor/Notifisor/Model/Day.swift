@@ -13,6 +13,8 @@ final class Day: Object, ObjectKeyIdentifiable {
     @Persisted var date: Date
     @Persisted var notices: List<Notice>
     var achievementRate: Double {
-        0
+        let total = Double(notices.count)
+        let isDone = Double(notices.filter { $0.isDone }.count)
+        return isDone == 0 ? 0 : isDone / total
     }
 }

@@ -13,20 +13,17 @@ struct DayCell: View {
 
     let date: Date
 
-    private var day: Day? {
-        return repository.get(Day.self, date.id) as? Day
+    private var day: Day {
+        return repository.get(Day.self, date.id) as? Day ?? Day(value: ["date": date])
     }
 
     private var percentage: Double {
-        guard let notices = day?.notices else { return 0 }
-        let total = Double(notices.count)
-        let done = Double(notices.filter { $0.isDone }.count)
-        return done / total
+        return day.achievementRate
     }
 
     var body: some View {
         NavigationLink {
-
+            HistoryNoticeView(day: day)
         } label: {
             ZStack {
                 Text(date.get(.day), format: .number)
