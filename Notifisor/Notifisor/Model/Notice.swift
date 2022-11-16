@@ -8,8 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class Notice: Object, ObjectKeyIdentifiable {
-    @Persisted(primaryKey: true) var _id: ObjectId
+final class Notice: ObjectWithId {
     @Persisted var title: String
     @Persisted var amount: Int
     @Persisted var isDone: Bool = false
