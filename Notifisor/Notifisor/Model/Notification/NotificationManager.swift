@@ -37,6 +37,15 @@ final class NotificationManager: ObservableObject {
         }
     }
 
+    func getPendingRequests() {
+        notiCenter.getPendingNotificationRequests { noties in
+            print("pending: \(noties.count)")
+        }
+        notiCenter.getDeliveredNotifications { noties in
+            print("Delivered: \(noties.count)")
+        }
+    }
+
     func createRequest(_ identifier: String, body: String, at date: Date?, weekday: Int? = nil) {
         guard let date = date else { return }
         let key: Set<Calendar.Component> = (weekday == nil) ? [.year, .month, .day, .hour, .minute] : [.hour, .minute]
@@ -59,7 +68,21 @@ final class NotificationManager: ObservableObject {
         }
     }
 
-    func deleteRequest(_ identifier: String) {
-        notiCenter.removePendingNotificationRequests(withIdentifiers: [identifier])
+    func deleteRequest(_ identifier: [String]) {
+        notiCenter.removePendingNotificationRequests(withIdentifiers: identifier)
+    }
+
+    func getIdentifier(from notice: Notice) -> [String] {
+        var ids: [String] = []
+        if notice.repeats.isEmpty {
+            let id = "\(notice.title) \(notice.noticeTime)-\(0)"
+            ids.append(id)
+        } else {
+            notice.repeats.forEach { weekday in
+                let id = "\(notice.title) \(notice.noticeTime)-\(weekday)"
+                ids.append(id)
+            }
+        }
+        return ids
     }
 }

@@ -98,6 +98,7 @@ struct NoticeEditView: View {
                     HStack {
                         Spacer()
                         Button("알림 삭제", role: .destructive) {
+                            deleteNotification()
                             notificationRepository.delete(notice)
                         }
                         Spacer()
@@ -121,6 +122,7 @@ struct NoticeEditView: View {
                             dismiss()
                         //MARK: - Notice 편집
                         } else {
+                            editNotification()
                             editNotice()
                             dismiss()
                         }
@@ -167,6 +169,16 @@ struct NoticeEditView: View {
                                                   at: date, weekday: $0)
             }
         }
+    }
+
+    private func editNotification() {
+        deleteNotification()
+        addNotification()
+    }
+
+    private func deleteNotification() {
+        let ids: [String] = notificationManager.getIdentifier(from: notice)
+        notificationManager.deleteRequest(ids)
     }
 
     private func addNotice() {
