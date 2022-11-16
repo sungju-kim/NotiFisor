@@ -14,13 +14,7 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
-    @EnvironmentObject private var repository: NoticeRepository
-
-    @ObservedResults(Day.self, filter: NSPredicate(format: "_id == %@", Date.now.id)) var days
-
-    private var day: Day {
-        return days.first ?? Day()
-    }
+    @StateRealmObject var day: Day
 
     var body: some View {
         NavigationView {
@@ -66,16 +60,5 @@ struct DailyNoticeView: View {
                 }
             }
         }
-    }
-}
-
-
-struct DailyNoticeView_Previews: PreviewProvider {
-    @State static var showMenu = false
-    @State static var showHistory = false
-    @State static var showProfile = false
-    
-    static var previews: some View {
-        DailyNoticeView(showMenu: $showMenu, showHistory: $showHistory, showProfile: $showProfile)
     }
 }
