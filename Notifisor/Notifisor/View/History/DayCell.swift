@@ -5,11 +5,24 @@
 //  Created by dale on 2022/10/13.
 //
 
+import RealmSwift
 import SwiftUI
 
 struct DayCell: View {
+    @EnvironmentObject private var repository: NoticeRepository
+
     let date: Date
-    var percentage: CGFloat = 0
+
+    private var day: Day? {
+        return repository.get(Day.self, date.id) as? Day
+    }
+
+    private var percentage: Double {
+        guard let notices = day?.notices else { return 0 }
+        let total = Double(notices.count)
+        let done = Double(notices.filter { $0.isDone }.count)
+        return done / total
+    }
 
     var body: some View {
         NavigationLink {
@@ -33,11 +46,5 @@ struct DayCell: View {
                     .rotationEffect(.degrees(-90))
             }
         }
-    }
-}
-
-struct DayCell_Previews: PreviewProvider {
-    static var previews: some View {
-        DayCell(date: .now, percentage: 0.8)
     }
 }
