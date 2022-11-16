@@ -33,7 +33,6 @@
 		6CA163EB28F7B63100E018F4 /* NoticeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */; };
 		6CAA77AF290292A600649ECE /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA77AE290292A600649ECE /* MonthView.swift */; };
 		6CE5774128F7E8A400A4CF7A /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774028F7E8A400A4CF7A /* Unit.swift */; };
-		6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */; };
 		6CE5774528F7EB5F00A4CF7A /* RepeatDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774428F7EB5F00A4CF7A /* RepeatDay.swift */; };
 		6CE5774928F8010C00A4CF7A /* Date + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774828F8010C00A4CF7A /* Date + extension.swift */; };
 		6CE5774B28F8020600A4CF7A /* HistoryNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5774A28F8020600A4CF7A /* HistoryNoticeCell.swift */; };
@@ -68,7 +67,6 @@
 		6CA163EA28F7B63100E018F4 /* NoticeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeEditView.swift; sourceTree = "<group>"; };
 		6CAA77AE290292A600649ECE /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		6CE5774028F7E8A400A4CF7A /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		6CE5774428F7EB5F00A4CF7A /* RepeatDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatDay.swift; sourceTree = "<group>"; };
 		6CE5774828F8010C00A4CF7A /* Date + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + extension.swift"; sourceTree = "<group>"; };
 		6CE5774A28F8020600A4CF7A /* HistoryNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryNoticeCell.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			children = (
 				6C6238F328FFDDAE000EF7FD /* Notification */,
 				6CE5774028F7E8A400A4CF7A /* Unit.swift */,
-				6CE5774228F7E8F200A4CF7A /* NumbersOnly.swift */,
 				00F2B0B7291B82A800176D8E /* Notice.swift */,
 				00AAB6132924B5D9002C1C6C /* ObjectWithId.swift */,
 				00979116291CF4EE0035A6CB /* NoticeRepository.swift */,
@@ -325,7 +322,6 @@
 				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
 				0032952828F98554002376DD /* ColoredImage.swift in Sources */,
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
-				6CE5774328F7E8F200A4CF7A /* NumbersOnly.swift in Sources */,
 				0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */,
 				6CE5774928F8010C00A4CF7A /* Date + extension.swift in Sources */,
 				6CE5775128F94E6300A4CF7A /* Calendar + extension.swift in Sources */,
