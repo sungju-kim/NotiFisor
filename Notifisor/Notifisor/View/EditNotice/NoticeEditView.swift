@@ -94,6 +94,15 @@ struct NoticeEditView: View {
                 } header: {
                     SectionHeaderText(text: "반복")
                 }
+                if !isAddSheet {
+                    HStack {
+                        Spacer()
+                        Button("알림 삭제", role: .destructive) {
+                            notificationRepository.delete(notice)
+                        }
+                        Spacer()
+                    }
+                }
             }
             .navigationTitle( isAddSheet ? "알림 추가" : "알림 편집")
             .navigationBarTitleDisplayMode(.inline)
@@ -171,18 +180,13 @@ struct NoticeEditView: View {
     }
 
     private func editNotice() {
-        do {
-            try notificationRepository.realm.write {
-                notice.thaw()?.title = text
-                notice.thaw()?.amount = Int(amount.value) ?? 0
-                notice.thaw()?.repeats.removeAll()
-                notice.thaw()?.repeats.append(objectsIn: selectedDays)
-                notice.thaw()?.unit = selectedUnit
-                notice.thaw()?.noticeTime = date
-            }
-        } catch(let error) {
-            print(error.localizedDescription)
-        }
+        let edittedNotice = Notice()
+        edittedNotice.title = text
+        edittedNotice.amount = Int(amount.value) ?? 0
+        edittedNotice.unit = selectedUnit
+        edittedNotice.noticeTime = date
+        edittedNotice.repeats.append(objectsIn: selectedDays)
+        notificationRepository.updateInfo(notice, edittedNotice)
     }
 }
 

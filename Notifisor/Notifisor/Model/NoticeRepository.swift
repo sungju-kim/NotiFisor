@@ -55,25 +55,16 @@ final class NoticeRepository: ObservableObject {
         return realm.object(ofType: type, forPrimaryKey: id)
     }
 
-    func updateInfo(_ type: Object.Type, _ id: ObjectId, _ value: [String: Any]) {
-        do {
-            try realm.write {
-                realm.create(type, value: value, update: .modified)
-            }
-        } catch {
-            fatalError("failing info update at \(#file)")
-        }
-    }
-
-    func updateInfo(_ oldObject: Object, _ newObject: Object) {
+    func updateInfo(_ oldObject: ObjectWithId, _ newObject: Object) {
         delete(oldObject)
         add(newObject)
     }
 
-    func delete(_ object: Object) {
+    func delete(_ object: ObjectWithId) {
+        guard let notice = get(Notice.self, object._id) as? Notice else { return }
         do {
             try realm.write {
-                realm.delete(object)
+                realm.delete(notice)
             }
         } catch {
             fatalError("failure at delteing a item")
