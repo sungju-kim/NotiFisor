@@ -10,7 +10,7 @@ import RealmSwift
 
 final class Notice: ObjectWithId {
     @Persisted var title: String
-    @Persisted var amount: Int
+    @Persisted var amount: Int?
     @Persisted var isDone: Bool = false
     @Persisted var noticeTime: Date
     @Persisted var repeats: List<Int>

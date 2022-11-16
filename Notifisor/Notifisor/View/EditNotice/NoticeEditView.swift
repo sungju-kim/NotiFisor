@@ -15,18 +15,10 @@ struct NoticeEditView: View {
     @EnvironmentObject private var notificationRepository: NoticeRepository
 
     @State var text: String = ""
-    @State var amount: NumbersOnly = NumbersOnly()
+    @State var amount: Int?
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
-    @State var repeats: [RepeatDay] = [
-        RepeatDay(weekDay: .everySunday),
-        RepeatDay(weekDay: .everyMonday),
-        RepeatDay(weekDay: .everyTuesday),
-        RepeatDay(weekDay: .everyWednesday),
-        RepeatDay(weekDay: .everyThursday),
-        RepeatDay(weekDay: .everyFriday),
-        RepeatDay(weekDay: .everySaturday)
-    ]
+    @State var repeats: [RepeatDay] = RepeatDay.WeekDay.allCases.map { RepeatDay(weekDay: $0) }
 
     @FocusState private var checkoutInFocus: CheckoutFocusable?
     enum CheckoutFocusable: Hashable {
@@ -53,6 +45,7 @@ struct NoticeEditView: View {
                 Section {
                     TextField("일정을 입력해주세요", text: $text)
                         .focused($checkoutInFocus, equals: .title)
+                        .submitLabel(.next)
 
                 } header: {
                     SectionHeaderText(text: "할 일")
@@ -60,11 +53,12 @@ struct NoticeEditView: View {
 
                 Section {
                     VStack(alignment: .center) {
-                        TextField("목표치를 입력해주세요.", text: $amount.value)
+                        TextField("목표치를 입력해주세요.", value: $amount, format: .number)
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 200)
                             .focused($checkoutInFocus, equals: .amount)
+                            .submitLabel(.done)
 
                         Divider()
 
@@ -88,7 +82,7 @@ struct NoticeEditView: View {
                 } header: {
                     SectionHeaderText(text: "알림 시간")
                 }
-                
+
                 Section {
                     RepeatSectionView(days: $repeats)
                 } header: {
@@ -115,32 +109,22 @@ struct NoticeEditView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        //MARK: - Notice 추가
-                        if isAddSheet {
-                            addNotification()
-                            addNotice()
-                            dismiss()
-                        //MARK: - Notice 편집
-                        } else {
-                            editNotification()
-                            editNotice()
-                            dismiss()
-                        }
+                        if !isAddSheet { deleteNotification() }
+                        addNotification()
+                        saveNotice()
+                        dismiss()
                     }
+                    .disabled(text == "" || amount == nil)
                 }
             }
             .onAppear {
-                //MARK: - Notice 편집
-                if !isAddSheet {
-                    self.text = notice.title
-                    self.amount = NumbersOnly(value: String(notice.amount))
-                    self.selectedUnit = notice.unit
-                    self.date = notice.noticeTime
-                    Array(notice.repeats).forEach { weekday in
-                        repeats[weekday-1].isSelected = true
-                    }
-                //MARK: - Notice 추가
-                } else {
+                self.text = notice.title
+                self.amount = notice.amount
+                self.selectedUnit = notice.unit
+                self.date = notice.noticeTime
+                notice.repeats.forEach { repeats[$0-1].isSelected = true }
+
+                if isAddSheet {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                         self.checkoutInFocus = .title
                     }
@@ -158,22 +142,15 @@ struct NoticeEditView: View {
         //MARK: - 단발성 알림
         if selectedDays.isEmpty {
             notificationManager.createRequest("\(text) \(date)-\(0)",
-                                              body: "\(text) \(amount)\(selectedUnit)",
+                                              body: "\(text) \(amount ?? 0)\(selectedUnit)",
                                               at: date)
         }
         //MARK: - 반복 알림
-        else {
-            selectedDays.forEach {
-                notificationManager.createRequest("\(text) \(date)-\($0)",
-                                                  body: "\(text) \(amount)\(selectedUnit)",
-                                                  at: date, weekday: $0)
-            }
+        selectedDays.forEach {
+            notificationManager.createRequest("\(text) \(date)-\($0)",
+                                              body: "\(text) \(amount ?? 0)\(selectedUnit)",
+                                              at: date, weekday: $0)
         }
-    }
-
-    private func editNotification() {
-        deleteNotification()
-        addNotification()
     }
 
     private func deleteNotification() {
@@ -181,25 +158,17 @@ struct NoticeEditView: View {
         notificationManager.deleteRequest(ids)
     }
 
-    private func addNotice() {
-        let notice = Notice()
-        notice.title = text
-        notice.amount = Int(amount.value) ?? 0
-        notice.repeats.append(objectsIn: selectedDays)
-        notice.unit = selectedUnit
-        notice.noticeTime = date
-        notificationRepository.add(notice)
+    private func saveNotice() {
+        let newNotice = Notice()
+        newNotice.title = text
+        newNotice.amount = amount ?? 0
+        newNotice.repeats.append(objectsIn: selectedDays)
+        newNotice.unit = selectedUnit
+        newNotice.noticeTime = date
+
+        isAddSheet ? notificationRepository.add(newNotice) : notificationRepository.updateInfo(notice, newNotice)
     }
 
-    private func editNotice() {
-        let edittedNotice = Notice()
-        edittedNotice.title = text
-        edittedNotice.amount = Int(amount.value) ?? 0
-        edittedNotice.unit = selectedUnit
-        edittedNotice.noticeTime = date
-        edittedNotice.repeats.append(objectsIn: selectedDays)
-        notificationRepository.updateInfo(notice, edittedNotice)
-    }
 }
 
 struct NoticeEditView_Previews: PreviewProvider {
