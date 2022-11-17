@@ -27,10 +27,14 @@ struct EllipsisView: View {
                 isShowEditSheet.toggle()
             })
         } label: {
-            Image(systemName: "ellipsis")
-                .rotationEffect(.degrees(90), anchor: .top)
-                .frame(width: 40, height: 40)
-                .foregroundColor(.secondary)
+            GeometryReader { geo in
+                Image(systemName: "ellipsis")
+                    .rotationEffect(.degrees(90), anchor: .top)
+                    .foregroundColor(.secondary)
+                    .frame(width: geo.size.width * 0.8)
+                    .frame(width: geo.size.width, height: geo.size.height)
+            }
+
         }
     }
 }
