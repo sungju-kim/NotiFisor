@@ -16,8 +16,12 @@ struct DailyNoticeCell: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text(notice.title)
-                    .font(.title)
+                HStack(alignment: .lastTextBaseline) {
+                    Text(notice.title)
+                        .font(.title)
+                    Text(notice.amount ?? 0, format: .number)
+                    Text(notice.unit.text)
+                }
 
                 HStack {
                     Text(notice.noticeTime, format: .dateTime.hour().minute())
