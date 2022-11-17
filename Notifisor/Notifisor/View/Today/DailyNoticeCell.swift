@@ -21,11 +21,10 @@ struct DailyNoticeCell: View {
 
                 HStack {
                     Text(notice.noticeTime, format: .dateTime.hour().minute())
-                        .foregroundStyle(.secondary)
 
                     Text("알림 예정")
-                        .foregroundStyle(.secondary)
                 }
+                .foregroundStyle(.secondary)
                 .padding(.top, 8)
             }
 
