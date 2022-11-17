@@ -15,7 +15,7 @@ struct RepeatSectionCell: View {
             repeatDay.isSelected.toggle()
         } label: {
             HStack {
-                Text(repeatDay.weekDay.rawValue)
+                Text("\(repeatDay.week.text)마다")
                     .foregroundColor(.black)
                 Spacer()
                 if repeatDay.isSelected {

@@ -18,7 +18,7 @@ struct NoticeEditView: View {
     @State var amount: Int?
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
-    @State var repeats: [RepeatDay] = RepeatDay.WeekDay.allCases.map { RepeatDay(weekDay: $0) }
+    @State var repeats: [RepeatDay] = Week.allCases.map { RepeatDay(week: $0) }
 
     @FocusState private var checkoutInFocus: CheckoutFocusable?
     enum CheckoutFocusable: Hashable {
@@ -29,7 +29,7 @@ struct NoticeEditView: View {
     let isAddSheet: Bool
 
     private var selectedDays: [Int] {
-        return repeats.filter { $0.isSelected }.map { $0.toInt }
+        return repeats.filter { $0.isSelected }.map { $0.week.rawValue }
     }
 
     @ObservedRealmObject var notice: Notice
