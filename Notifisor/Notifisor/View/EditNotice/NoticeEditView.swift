@@ -94,6 +94,7 @@ struct NoticeEditView: View {
                         Button("알림 삭제", role: .destructive) {
                             deleteNotification()
                             notificationRepository.delete(notice)
+                            dismiss()
                         }
                         Spacer()
                     }
