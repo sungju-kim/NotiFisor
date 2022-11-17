@@ -11,7 +11,7 @@ struct MenuView: View {
     @Binding var showHistory: Bool
     @Binding var showProfile: Bool
     @Binding var showMenu: Bool
-
+    let pageDelay = 0.5
     var body: some View {
         VStack(alignment: .leading) {
             Text("Notifisor")
@@ -21,8 +21,10 @@ struct MenuView: View {
 
             Button {
                 withAnimation {
-                    showHistory.toggle()
                     showMenu.toggle()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + pageDelay) {
+                    showHistory.toggle()
                 }
             } label: {
                     Image(systemName: "calendar")
@@ -34,9 +36,13 @@ struct MenuView: View {
 
             Button {
                 withAnimation {
-                    showProfile.toggle()
                     showMenu.toggle()
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + pageDelay) {
+                    showProfile.toggle()
+                }
+
+
             } label: {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
