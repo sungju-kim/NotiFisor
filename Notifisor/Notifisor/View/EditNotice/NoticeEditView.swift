@@ -134,6 +134,8 @@ struct NoticeEditView: View {
             .onSubmit {
                 if checkoutInFocus == .title {
                     checkoutInFocus = .amount
+                } else if checkoutInFocus == .amount {
+                    checkoutInFocus = nil
                 }
             }
         }
