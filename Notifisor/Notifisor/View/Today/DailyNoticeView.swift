@@ -18,14 +18,21 @@ struct DailyNoticeView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 30) {
-                    ForEach(day.notices) {
-                        DailyNoticeCell(notice: $0)
+            TabView {
+                ScrollView{
+                    VStack(spacing: 30) {
+                        ForEach(day.notices) {
+                            DailyNoticeCell(notice: $0)
+                        }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .navigationTitle("오늘 일정")
+                TotalListView()
+                    .navigationTitle("전체 등록 일정")
             }
+            .tabViewStyle(PageTabViewStyle())
+
             .frame(maxWidth: .infinity)
             .overlay {
                 if showMenu {
