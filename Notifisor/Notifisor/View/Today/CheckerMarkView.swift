@@ -7,14 +7,28 @@
 
 import SwiftUI
 
-struct CheckerMarkView: View {
+struct CheckerMark: View {
+    @Binding var isDone: Bool
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            Circle()
+                .strokeBorder(isDone ? .white : Color(.systemGray2), style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                .overlay(alignment: .center) {
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .foregroundColor(isDone ? .green : Color(.systemGray2))
+                        .scaledToFit()
+                        .frame(width: geo.size.width / 2)
+                }
+        }
     }
 }
 
 struct CheckerMarkView_Previews: PreviewProvider {
+    @State static var isDone: Bool = true
     static var previews: some View {
-        CheckerMarkView()
+        CheckerMark(isDone: $isDone)
+            .background(.blue)
     }
 }
