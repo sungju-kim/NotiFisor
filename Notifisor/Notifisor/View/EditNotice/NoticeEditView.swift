@@ -15,7 +15,7 @@ struct NoticeEditView: View {
     @EnvironmentObject private var notificationRepository: NoticeRepository
 
     @State var text: String = ""
-    @State var amount: Int?
+    @State var amount: Double?
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
     @State var repeats: [RepeatDay] = Week.allCases.map { RepeatDay(week: $0) }
