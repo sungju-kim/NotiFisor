@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DailyNoticeCell: View {
     @ObservedRealmObject var notice: Notice
+    @EnvironmentObject var noticeRepository: NoticeRepository
     @State private var isShowEditSheet = false
 
     var body: some View {
@@ -33,7 +34,7 @@ struct DailyNoticeCell: View {
             Menu {
                 Button("완료", action: {
                     do {
-                        try NoticeRepository.shared.realm.write {
+                        try noticeRepository.realm.write {
                             notice.thaw()?.isDone.toggle()
                         }
                     } catch(let error) {
