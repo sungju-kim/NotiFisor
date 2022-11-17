@@ -22,8 +22,8 @@ struct NoticeEditView: View {
 
     @FocusState private var checkoutInFocus: CheckoutFocusable?
     enum CheckoutFocusable: Hashable {
-      case title
-      case amount
+        case title
+        case amount
     }
 
     let isAddSheet: Bool
