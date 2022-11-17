@@ -10,7 +10,6 @@ import SwiftUI
 
 struct DailyNoticeCell: View {
     @ObservedRealmObject var notice: Notice
-    @EnvironmentObject var noticeRepository: NoticeRepository
     @State private var isShowEditSheet = false
 
     var body: some View {
@@ -25,7 +24,6 @@ struct DailyNoticeCell: View {
 
                 HStack {
                     Text(notice.noticeTime, format: .dateTime.hour().minute())
-
                     Text("알림 예정")
                 }
                 .foregroundStyle(.secondary)
@@ -34,25 +32,7 @@ struct DailyNoticeCell: View {
 
             Spacer()
 
-            Menu {
-                Button("완료", action: {
-                    do {
-                        try noticeRepository.realm.write {
-                            notice.thaw()?.isDone.toggle()
-                        }
-                    } catch(let error) {
-                        print(error.localizedDescription)
-                    }
-                })
-                Button("수정", action: {
-                    isShowEditSheet.toggle()
-                })
-            } label: {
-                Image(systemName: "ellipsis")
-                    .rotationEffect(.degrees(90), anchor: .top)
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(.secondary)
-            }
+            EllipsisView(notice: notice, isShowEditSheet: $isShowEditSheet)
         }
         .padding()
         .background(.ultraThickMaterial)
