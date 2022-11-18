@@ -52,15 +52,13 @@ struct NoticeEditView: View {
                 }
 
                 Section {
-                    VStack(alignment: .center) {
+                    HStack(alignment: .center) {
                         TextField("목표치를 입력해주세요.", value: $amount, format: .number)
                             .multilineTextAlignment(.center)
                             .keyboardType(.numbersAndPunctuation)
                             .frame(maxWidth: 200)
                             .focused($checkoutInFocus, equals: .amount)
                             .submitLabel(.done)
-
-                        Divider()
 
                         Picker("단위", selection: $selectedUnit) {
                             ForEach(Unit.allCases, id: \.self) {
