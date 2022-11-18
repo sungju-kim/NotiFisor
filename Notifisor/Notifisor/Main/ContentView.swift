@@ -21,14 +21,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        let drag = DragGesture()
-            .onEnded { move in
-                withAnimation {
-                    showMenu = move.translation.width >= -100
-                }
-            }
-
-        return GeometryReader { geometry in
+        GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 DailyNoticeView(showMenu: $showMenu,
                                 showHistory: $showHistory,
@@ -46,7 +39,6 @@ struct ContentView: View {
                     .transition(.move(edge: .leading))
                 }
             }
-            .gesture(drag)
         }
     }
 }

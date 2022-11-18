@@ -15,15 +15,15 @@ struct NoticeEditView: View {
     @EnvironmentObject private var notificationRepository: NoticeRepository
 
     @State var text: String = ""
-    @State var amount: Int?
+    @State var amount: Double?
     @State var selectedUnit: Unit = Unit.hour
     @State var date: Date = Date()
     @State var repeats: [RepeatDay] = Week.allCases.map { RepeatDay(week: $0) }
 
     @FocusState private var checkoutInFocus: CheckoutFocusable?
     enum CheckoutFocusable: Hashable {
-      case title
-      case amount
+        case title
+        case amount
     }
 
     let isAddSheet: Bool
@@ -52,15 +52,13 @@ struct NoticeEditView: View {
                 }
 
                 Section {
-                    VStack(alignment: .center) {
+                    HStack(alignment: .center) {
                         TextField("목표치를 입력해주세요.", value: $amount, format: .number)
                             .multilineTextAlignment(.center)
-                            .keyboardType(.decimalPad)
+                            .keyboardType(.numbersAndPunctuation)
                             .frame(maxWidth: 200)
                             .focused($checkoutInFocus, equals: .amount)
                             .submitLabel(.done)
-
-                        Divider()
 
                         Picker("단위", selection: $selectedUnit) {
                             ForEach(Unit.allCases, id: \.self) {
@@ -134,6 +132,8 @@ struct NoticeEditView: View {
             .onSubmit {
                 if checkoutInFocus == .title {
                     checkoutInFocus = .amount
+                } else if checkoutInFocus == .amount {
+                    checkoutInFocus = nil
                 }
             }
         }
