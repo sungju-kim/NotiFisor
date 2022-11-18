@@ -28,7 +28,7 @@ struct DayCell: View {
             ZStack {
                 Text(date.get(.day), format: .number)
                     .font(.callout)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 
                 Circle()
                     .stroke(Color.gray, lineWidth: 5)

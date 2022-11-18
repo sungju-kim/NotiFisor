@@ -16,11 +16,11 @@ struct RepeatSectionCell: View {
         } label: {
             HStack {
                 Text("\(repeatDay.week.text)마다")
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 Spacer()
                 if repeatDay.isSelected {
                     Image(systemName: "checkmark")
-                        .tint(.black)
+                        .tint(.primary)
                 }
             }
         }
