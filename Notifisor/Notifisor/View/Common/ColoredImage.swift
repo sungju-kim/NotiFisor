@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColoredImage: View {
     let source: String
-    let color: Color = .black
+    let color: Color = .primary
 
     var body: some View {
         Image(systemName: source)
