@@ -15,24 +15,30 @@ struct DailyNoticeCell: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                HStack(alignment: .lastTextBaseline) {
+                HStack(alignment: .top) {
                     Text(notice.title)
-                        .font(.title)
-                    Text(notice.amount ?? 0, format: .number)
-                    Text(notice.unit.text)
+                        .font(.title2)
+                        .lineLimit(2)
+                        .layoutPriority(1)
+
+                    Spacer()
+
+                    EllipsisView(notice: notice, isShowEditSheet: $isShowEditSheet)
+                        .frame(width: 30, height: 30)
                 }
 
                 HStack {
+                    Text(notice.amount ?? 0, format: .number)
+                    Text(notice.unit.text)
+
+                    Spacer()
+
                     Text(notice.noticeTime, format: .dateTime.hour().minute())
                     Text("알림 예정")
                 }
                 .foregroundStyle(.secondary)
-                .padding(.top, 8)
+                .padding(.top, 4)
             }
-
-            Spacer()
-
-            EllipsisView(notice: notice, isShowEditSheet: $isShowEditSheet)
         }
         .padding()
         .background(.ultraThickMaterial)
@@ -42,7 +48,6 @@ struct DailyNoticeCell: View {
         .sheet(isPresented: $isShowEditSheet) {
             NoticeEditView(notice)
         }
-        
     }
 
 }
