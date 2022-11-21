@@ -13,7 +13,7 @@ struct MonthView: View {
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
             Section {
-                DayOfWeekView()
+                WeekDayView()
                 ForEach(calendar.days(for: month), id: \.self) { day in
                     let cell = DayCell(date: day)
 

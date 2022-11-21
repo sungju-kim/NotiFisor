@@ -15,7 +15,7 @@
 		00979117291CF4EE0035A6CB /* NoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00979116291CF4EE0035A6CB /* NoticeRepository.swift */; };
 		00AAB6142924B5D9002C1C6C /* ObjectWithId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AAB6132924B5D9002C1C6C /* ObjectWithId.swift */; };
 		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
-		00D9DB4428FD2B060030A2C7 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */; };
+		00D9DB4428FD2B060030A2C7 /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */; };
 		00F2B0B1291AB8E200176D8E /* OpaqueBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */; };
 		00F2B0B4291B7FBE00176D8E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 00F2B0B3291B7FBE00176D8E /* Realm */; };
 		00F2B0B6291B7FBE00176D8E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 00F2B0B5291B7FBE00176D8E /* RealmSwift */; };
@@ -52,7 +52,7 @@
 		00979116291CF4EE0035A6CB /* NoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRepository.swift; sourceTree = "<group>"; };
 		00AAB6132924B5D9002C1C6C /* ObjectWithId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectWithId.swift; sourceTree = "<group>"; };
 		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
-		00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
+		00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueBlackView.swift; sourceTree = "<group>"; };
 		00F2B0B7291B82A800176D8E /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		00F2B0B9291B9E7A00176D8E /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				6CA163E028F7A8B200E018F4 /* DayCell.swift */,
 				6CE5774C28F8376200A4CF7A /* CalendarView.swift */,
 				6CAA77AE290292A600649ECE /* MonthView.swift */,
-				00D9DB4328FD2B060030A2C7 /* DayOfWeekView.swift */,
+				00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CAA77AF290292A600649ECE /* MonthView.swift in Sources */,
-				00D9DB4428FD2B060030A2C7 /* DayOfWeekView.swift in Sources */,
+				00D9DB4428FD2B060030A2C7 /* WeekDayView.swift in Sources */,
 				00AAB6142924B5D9002C1C6C /* ObjectWithId.swift in Sources */,
 				00F2B0B1291AB8E200176D8E /* OpaqueBlackView.swift in Sources */,
 				00FDB86229260C1500766D1D /* EllipsisView.swift in Sources */,
