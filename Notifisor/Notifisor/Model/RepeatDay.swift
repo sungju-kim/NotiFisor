@@ -19,7 +19,7 @@ enum Week: Int, CaseIterable {
     case wednes
     case thurs
     case fri
-    case satur
+    case sat
 
     var text: String {
         switch self {
@@ -35,8 +35,12 @@ enum Week: Int, CaseIterable {
             return "목요일"
         case .fri:
             return "금요일"
-        case .satur:
+        case .sat:
             return "토요일"
         }
+    }
+
+    var weekDay: String {
+        return String(String(describing: self).capitalized.first ?? Character(""))
     }
 }
