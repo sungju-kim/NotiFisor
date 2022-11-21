@@ -10,30 +10,19 @@ import SwiftUI
 
 struct TotalListView: View {
 
-    @ObservedResults(Weekday.self) var weekdays
+    @ObservedResults(Notice.self) var notices
 
     var body: some View {
         List {
-            ForEach(weekdays) { week in
-                Section {
-                    ForEach(week.notices) {
-                        DailyNoticeCell(notice: $0)
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 16)
-                    }
-                } header: {
-                    Text("\((Week(rawValue: week.id) ?? .mon).text)")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .padding(.horizontal, 16)
-                        .background(Color(.systemGray5))
-                }
-                .listRowBackground(Color(.systemGray5))
-                .listRowSeparator(.hidden)
-                .listSectionSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-
+            ForEach(notices) {
+                WholeNoticeCell(notice: $0)
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 16)
             }
+            .listRowBackground(Color(.systemGray5))
+            .listRowSeparator(.hidden)
+            .listSectionSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .listStyle(.plain)
     }
