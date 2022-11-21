@@ -16,18 +16,16 @@ struct HistoryNoticeView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(day.notices) {
-                        HistoryNoticeCell(notice: $0)
-                    }
+        ScrollView {
+            VStack(spacing: 16) {
+                ForEach(day.notices) {
+                    HistoryNoticeCell(notice: $0)
                 }
-                .padding(.horizontal)
             }
             .frame(maxWidth: .infinity)
-            .background(Color(.systemGray5))
-            .navigationTitle(text)
+            .padding()
         }
+        .background(Color(.systemGray5))
+        .navigationTitle(text)
     }
 }
