@@ -26,6 +26,7 @@ struct DailyNoticeView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.vertical, 16)
                 }
                 .navigationTitle("오늘 일정")
                 TotalListView()
