@@ -41,6 +41,6 @@ enum Week: Int, CaseIterable {
     }
 
     var weekDay: String {
-        return String(String(describing: self).capitalized.first ?? Character(""))
+        return String(self.text.first ?? Character(""))
     }
 }
