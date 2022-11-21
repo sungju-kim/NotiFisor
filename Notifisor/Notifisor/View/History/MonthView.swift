@@ -14,6 +14,8 @@ struct MonthView: View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7), alignment: .center, spacing: 16) {
             Section {
                 WeekDayView()
+                    .font(.title3.bold())
+                
                 ForEach(calendar.days(for: month), id: \.self) { day in
                     let cell = DayCell(date: day)
 
