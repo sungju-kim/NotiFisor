@@ -15,6 +15,7 @@ struct MenuView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Notifisor")
+                .fixedSize()
                 .font(.largeTitle.bold())
                 .foregroundColor(.white)
                 .padding(.top, 30)
@@ -53,7 +54,8 @@ struct MenuView: View {
 
             Spacer()
         }
-        .padding()
+        .padding(.vertical, 20)
+        .padding(.horizontal)
         .foregroundColor(.gray)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(red: 32/255, green: 32/255, blue: 32/255))
