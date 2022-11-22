@@ -14,6 +14,7 @@ struct DailyNoticeView: View {
     @Binding var showProfile: Bool
     @State var showSheet = false
 
+    //TODO: 추후 변경 가능성
     @StateRealmObject var day: Day
 
     var body: some View {

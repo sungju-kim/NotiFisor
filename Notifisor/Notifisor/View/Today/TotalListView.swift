@@ -9,7 +9,7 @@ import RealmSwift
 import SwiftUI
 
 struct TotalListView: View {
-
+    //TODO: 추후 변경 가능성
     @ObservedResults(Notice.self) var notices
 
     var body: some View {
