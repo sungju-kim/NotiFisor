@@ -7,17 +7,20 @@
 import SwiftUI
 
 struct CalendarView: View {
-    var body: some View {
-        VStack {
-            MonthView()
-                .padding()
-            Spacer()
-        }
-    }
-}
+    @Environment(\.calendar) var calendar: Calendar
+    @State var date: Date = .now
+    @State var year: Int = Date.now.get(.year)
+    @State var month: Int = Date.now.get(.month)
+    @State var isShowing: Bool = false
 
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
+    var body: some View {
+        ScrollView {
+            VStack {
+                CustomPicker(date: $date, year: $year, month: $month, isShowing: $isShowing)
+                MonthView(date: $date)
+                    .padding(.horizontal)
+            }
+
+        }
     }
 }
