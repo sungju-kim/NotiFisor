@@ -44,6 +44,8 @@ struct DailyNoticeView: View {
             .background(Color(.systemGray5))
             .overlay {
                 NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
+                    .navigationTitle("달성률 조회")
+                    .navigationBarTitleDisplayMode(.inline)
                 NavigationLink(destination: EmptyView(), isActive: $showProfile) { EmptyView() }
             }
             .toolbar {
