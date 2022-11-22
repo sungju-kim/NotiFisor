@@ -11,21 +11,32 @@ struct EllipsisView: View {
     @EnvironmentObject var noticeRepository: NoticeRepository
     @ObservedRealmObject var notice: Notice
     @Binding var isShowEditSheet: Bool
+    let canShowFinish: Bool
+    
+    init(notice: Notice, isShowEditSheet: Binding<Bool> = .constant(false), canShowFinish: Bool = true) {
+        self.notice = notice
+        self.canShowFinish = canShowFinish
+        self._isShowEditSheet = isShowEditSheet
+    }
     
     var body: some View {
         Menu {
-            Button("완료", action: {
-                do {
-                    try noticeRepository.realm.write {
-                        notice.thaw()?.isDone.toggle()
-                    }
-                } catch(let error) {
-                    print(error.localizedDescription)
+            Group {
+                Button("수정", action: {
+                    isShowEditSheet.toggle()
+                })
+                if canShowFinish {
+                    Button("완료", action: {
+                        do {
+                            try noticeRepository.realm.write {
+                                notice.thaw()?.isDone.toggle()
+                            }
+                        } catch(let error) {
+                            print(error.localizedDescription)
+                        }
+                    })
                 }
-            })
-            Button("수정", action: {
-                isShowEditSheet.toggle()
-            })
+            }
         } label: {
             GeometryReader { geo in
                 Image(systemName: "ellipsis")

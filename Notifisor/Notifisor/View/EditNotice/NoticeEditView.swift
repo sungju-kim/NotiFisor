@@ -43,7 +43,7 @@ struct NoticeEditView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("일정을 입력해주세요", text: $text)
+                    TextField("일정을 입력하세요", text: $text)
                         .focused($checkoutInFocus, equals: .title)
                         .submitLabel(.next)
 
@@ -53,7 +53,7 @@ struct NoticeEditView: View {
 
                 Section {
                     HStack(alignment: .center) {
-                        TextField("목표치를 입력해주세요.", value: $amount, format: .number)
+                        TextField("목표치를 입력하세요", value: $amount, format: .number)
                             .multilineTextAlignment(.center)
                             .keyboardType(.numbersAndPunctuation)
                             .frame(maxWidth: 200)
