@@ -20,7 +20,6 @@ struct CalendarView: View {
                 MonthView(date: $date)
                     .padding(.horizontal)
             }
-
         }
     }
 }
