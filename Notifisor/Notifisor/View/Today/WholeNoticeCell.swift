@@ -46,10 +46,3 @@ struct WholeNoticeCell: View {
         }
     }
 }
-
-struct WholeNoticeCell_Previews: PreviewProvider {
-    @ObservedResults(Notice.self) static var notices
-    static var previews: some View {
-        WholeNoticeCell(notice: notices.first!)
-    }
-}
