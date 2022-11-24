@@ -72,17 +72,10 @@ final class NotificationManager: ObservableObject {
         notiCenter.removePendingNotificationRequests(withIdentifiers: identifier)
     }
 
-    func getIdentifier(from notice: Notice) -> [String] {
-        var ids: [String] = []
-        if notice.repeats.isEmpty {
-            let id = "\(notice.title) \(notice.noticeTime)-\(0)"
-            ids.append(id)
-        } else {
-            notice.repeats.forEach { weekday in
-                let id = "\(notice.title) \(notice.noticeTime)-\(weekday)"
-                ids.append(id)
-            }
-        }
-        return ids
+    func getIdentifier(from notice: NoticeType) -> [String] {
+        guard let notice = notice as? Notice else { return [] }
+        var result = ["\(notice.title) \(notice.noticeTime)-\(0)"]
+        if !notice.repeats.isEmpty { result = notice.repeats.map { "\(notice.title) \(notice.noticeTime)-\($0)" } }
+        return result
     }
 }
