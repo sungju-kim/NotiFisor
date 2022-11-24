@@ -14,6 +14,7 @@ final class Notice: NoticeType {
         result.rootId = _id
         result.title = title
         result.amount = amount
+        result.unit = unit
         result.noticeTime = noticeTime
         result.repeats = repeats
         result.isDone = false
