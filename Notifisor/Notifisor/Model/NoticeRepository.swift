@@ -24,7 +24,9 @@ final class NoticeRepository: ObservableObject {
                 if get(Day.self, Date.now.id) == nil {
                     let today = Date.now
                     guard let weekday = get(Weekday.self, today.get(.weekday)) as? Weekday else { return }
-                    realm.create(Day.self, value: ["_id": today.id, "date": today, "notices": weekday.notices], update: .modified)
+                    let temp = List<CurrentNotice>()
+                    weekday.notices.forEach { temp.append($0.toCurrent()) }
+                    realm.create(Day.self, value: ["_id": today.id, "date": today, "notices": temp], update: .modified)
                 }
             }
         } catch {
@@ -32,17 +34,17 @@ final class NoticeRepository: ObservableObject {
         }
     }
 
-    func add(_ object: Object) {
-        guard let notice = object as? Notice else { return }
+    func add(_ notice: NoticeType) {
         do {
             try realm.write {
+                guard let notice = notice as? Notice else { return }
                 for i in notice.repeats {
                     realm.objects(Weekday.self)[i-1].notices.append(notice)
                 }
 
                 if notice.repeats.contains(Date.now.get(.weekday)) || notice.repeats.isEmpty {
                     guard let day = realm.object(ofType: Day.self, forPrimaryKey: Date.now.id)  else { return }
-                    day.notices.append(notice)
+                    day.notices.append(notice.toCurrent())
                 }
 
             }
@@ -55,19 +57,44 @@ final class NoticeRepository: ObservableObject {
         return realm.object(ofType: type, forPrimaryKey: id)
     }
 
-    func updateInfo(_ oldObject: ObjectWithId, _ newObject: Object) {
+    func updateInfo(_ oldObject: NoticeType, _ newObject: NoticeType) {
         delete(oldObject)
         add(newObject)
     }
 
-    func delete(_ object: ObjectWithId) {
-        guard let notice = get(Notice.self, object._id) as? Notice else { return }
-        do {
-            try realm.write {
-                realm.delete(notice)
+    func delete(_ object: NoticeType) {
+        guard let day = get(Day.self, Date.now.id) as? Day else { return }
+
+        if let object = object as? CurrentNotice {
+            do {
+                try realm.write {
+                    if let notice = get(Notice.self, object.rootId) as? Notice {
+                        realm.delete(notice)
+                    }
+
+                    if let current = day.notices.where { $0.rootId == object.rootId }.first {
+                        realm.delete(current)
+                    }
+                }
+            } catch {
+                fatalError("failure at delteing a item")
             }
-        } catch {
-            fatalError("failure at delteing a item")
+
+        } else {
+            do {
+                try realm.write {
+                    if let notice = get(Notice.self, object._id) as? Notice {
+                        realm.delete(notice)
+                    }
+
+                    if let current = day.notices.where { $0.rootId == object._id }.first {
+                        realm.delete(current)
+                    }
+                }
+            } catch {
+                fatalError("failure at delteing a item")
+            }
         }
+
     }
 }
