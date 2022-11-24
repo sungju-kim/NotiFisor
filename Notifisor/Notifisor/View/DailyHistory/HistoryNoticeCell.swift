@@ -9,7 +9,7 @@ import RealmSwift
 import SwiftUI
 
 struct HistoryNoticeCell: View {
-    @ObservedRealmObject var notice: Notice
+    @ObservedRealmObject var notice: CurrentNotice
     var title: String {
         return notice.title
     }

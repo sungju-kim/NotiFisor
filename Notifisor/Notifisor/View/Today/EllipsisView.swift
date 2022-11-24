@@ -9,11 +9,11 @@ import SwiftUI
 
 struct EllipsisView: View {
     @EnvironmentObject var noticeRepository: NoticeRepository
-    @ObservedRealmObject var notice: Notice
+    @ObservedRealmObject var notice: NoticeType
     @Binding var isShowEditSheet: Bool
     let canShowFinish: Bool
     
-    init(notice: Notice, isShowEditSheet: Binding<Bool> = .constant(false), canShowFinish: Bool = true) {
+    init(notice: NoticeType, isShowEditSheet: Binding<Bool> = .constant(false), canShowFinish: Bool = true) {
         self.notice = notice
         self.canShowFinish = canShowFinish
         self._isShowEditSheet = isShowEditSheet
@@ -25,7 +25,7 @@ struct EllipsisView: View {
                 Button("수정", action: {
                     isShowEditSheet.toggle()
                 })
-                if canShowFinish {
+                if let notice = notice as? CurrentNotice {
                     Button("완료", action: {
                         do {
                             try noticeRepository.realm.write {

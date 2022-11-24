@@ -32,11 +32,11 @@ struct NoticeEditView: View {
         return repeats.filter { $0.isSelected }.map { $0.week.rawValue }
     }
 
-    @ObservedRealmObject var notice: Notice
+    @ObservedRealmObject var notice: NoticeType
 
-    init(_ notice: Notice? = nil) {
+    init(_ notice: NoticeType? = nil) {
         self.isAddSheet = notice == nil
-        self.notice = notice ?? Notice()
+        self.notice = notice ?? NoticeType()
     }
 
     var body: some View {
@@ -121,6 +121,7 @@ struct NoticeEditView: View {
                 self.amount = notice.amount
                 self.selectedUnit = notice.unit
                 self.date = notice.noticeTime
+
                 notice.repeats.forEach { repeats[$0-1].isSelected = true }
 
                 if isAddSheet {

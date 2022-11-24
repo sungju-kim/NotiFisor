@@ -9,7 +9,7 @@ import RealmSwift
 import SwiftUI
 
 struct DailyNoticeCell: View {
-    @ObservedRealmObject var notice: Notice
+    @ObservedRealmObject var notice: CurrentNotice
     @State private var isShowEditSheet = false
 
     var body: some View {

@@ -1,5 +1,5 @@
 //
-//  Notice.swift
+//  NoticeType.swift
 //  Notifisor
 //
 //  Created by YEONGJIN JANG on 2022/11/09.
@@ -8,11 +8,11 @@
 import Foundation
 import RealmSwift
 
-final class Notice: ObjectWithId {
+class NoticeType: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var title: String
     @Persisted var amount: Double?
-    @Persisted var isDone: Bool = false
     @Persisted var noticeTime: Date
-    @Persisted var repeats: List<Int>
     @Persisted var unit: Unit
+    @Persisted var repeats: List<Int>
 }

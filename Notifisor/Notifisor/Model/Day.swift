@@ -11,7 +11,7 @@ import RealmSwift
 final class Day: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var _id = ""
     @Persisted var date: Date
-    @Persisted var notices: List<Notice>
+    @Persisted var notices: List<CurrentNotice>
     var achievementRate: Double {
         let total = Double(notices.count)
         let isDone = Double(notices.filter { $0.isDone }.count)
