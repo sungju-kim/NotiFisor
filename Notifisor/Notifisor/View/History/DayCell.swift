@@ -14,7 +14,7 @@ struct DayCell: View {
     let date: Date
 
     private var day: Day {
-        return repository.get(Day.self, date.id) as? Day ?? Day(value: ["date": date])
+        return repository.get(Day.self, date.id) ?? Day(value: ["date": date])
     }
 
     private var percentage: Double {

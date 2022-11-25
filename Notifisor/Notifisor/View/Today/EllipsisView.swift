@@ -27,12 +27,8 @@ struct EllipsisView: View {
                 })
                 if let notice = notice as? CurrentNotice {
                     Button("완료", action: {
-                        do {
-                            try noticeRepository.realm.write {
-                                notice.thaw()?.isDone.toggle()
-                            }
-                        } catch(let error) {
-                            print(error.localizedDescription)
+                        noticeRepository.write {
+                            notice.thaw()?.isDone.toggle()
                         }
                     })
                 }
