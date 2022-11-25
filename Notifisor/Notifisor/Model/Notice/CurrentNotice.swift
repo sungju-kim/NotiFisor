@@ -11,4 +11,8 @@ import RealmSwift
 final class CurrentNotice: NoticeType {
     @Persisted var isDone: Bool = false
     @Persisted var rootId: ObjectId
+
+    override var targetId: ObjectId {
+        return rootId
+    }
 }
