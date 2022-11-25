@@ -15,4 +15,5 @@ class NoticeType: Object, ObjectKeyIdentifiable {
     @Persisted var noticeTime: Date
     @Persisted var unit: Unit
     @Persisted var repeats: List<Int>
+    var targetId: ObjectId { return _id }
 }
