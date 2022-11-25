@@ -17,7 +17,7 @@ struct ContentView: View {
     @EnvironmentObject var repository: NoticeRepository
 
     private var day: Day {
-        return repository.get(Day.self, Date.now.id) as? Day ?? Day()
+        return repository.day ?? Day()
     }
 
     var body: some View {
