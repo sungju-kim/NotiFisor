@@ -168,7 +168,7 @@ struct NoticeEditView: View {
         newNotice.unit = selectedUnit
         newNotice.noticeTime = date
 
-        isAddSheet ? notificationRepository.add(newNotice) : notificationRepository.updateInfo(notice, newNotice)
+        notificationRepository.updateInfo(notice, newNotice)
     }
 
 }
