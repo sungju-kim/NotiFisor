@@ -53,7 +53,7 @@ final class NoticeRepository: ObservableObject {
         }
     }
 
-    func get<Element: Object, KeyType>(_ type: Element.Type, _ id: KeyType) -> Object? {
+    func get<Element: Object, KeyType>(_ type: Element.Type, _ id: KeyType) -> Element? {
         return realm.object(ofType: type, forPrimaryKey: id)
     }
 
