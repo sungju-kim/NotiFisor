@@ -39,7 +39,7 @@ struct DayCell: View {
                     .stroke(style: StrokeStyle(lineWidth: 3,
                                                lineCap: .round,
                                                lineJoin: .round))
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Constant.pointColor)
                     .rotationEffect(.degrees(-90))
             }
             .frame(width: 35, height: 35)

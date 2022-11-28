@@ -38,7 +38,7 @@ struct HistoryNoticeCell: View {
         }
         .padding()
         .background(.ultraThickMaterial)
-        .background(isResolved ? .yellow : .white)
+        .background(isResolved ? Constant.pointColor : .white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 1, x: 5, y: 5)
 
