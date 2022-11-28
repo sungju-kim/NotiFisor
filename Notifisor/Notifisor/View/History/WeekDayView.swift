@@ -17,18 +17,8 @@ struct WeekDayView: View {
     
     var body: some View {
         ForEach(Week.allCases, id: \.self) { weekday in
-            ZStack {
-                if selectedDay.contains(weekday.rawValue) {
-                    Circle()
-                        .stroke(.yellow,
-                                style: StrokeStyle(lineWidth: 2,
-                                                   lineCap: .round,
-                                                   lineJoin: .round))
-                        .frame(width: 20)
-                }
-                
-                Text(weekday.weekDay)
-            }
+            Text(weekday.weekDay)
+                .foregroundColor(selectedDay.contains(weekday.rawValue) ? Constant.pointColor : .gray)
         }
     }
 }
