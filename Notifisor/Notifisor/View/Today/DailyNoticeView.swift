@@ -41,7 +41,7 @@ struct DailyNoticeView: View {
                     OpaqueBlackView(showMenu: $showMenu)
                 }
             }
-            .background(Color(.systemGray5))
+            .background(Constant.background)
             .overlay {
                 NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
                     .navigationTitle("달성률 조회")

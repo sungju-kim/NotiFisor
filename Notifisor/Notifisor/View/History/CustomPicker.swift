@@ -54,7 +54,7 @@ struct CustomPicker: View {
                 .clipped()
             }
             .font(.title)
-            .background(Color(.systemGray5))
+            .background(Constant.background)
             .containerShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
             .transition(.scale(scale: 0.1, anchor: .top))
             .padding()

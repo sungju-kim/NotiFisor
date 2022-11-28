@@ -42,7 +42,7 @@ struct DailyNoticeCell: View {
         }
         .padding()
         .background(.ultraThickMaterial)
-        .background(notice.isDone ? .yellow : Color(.systemGray5))
+        .background(notice.isDone ? Constant.pointColor : Constant.background)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 1, x: 5, y: 5)
         .sheet(isPresented: $isShowEditSheet) {

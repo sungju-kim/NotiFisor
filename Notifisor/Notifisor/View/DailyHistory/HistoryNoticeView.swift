@@ -25,7 +25,7 @@ struct HistoryNoticeView: View {
             .frame(maxWidth: .infinity)
             .padding()
         }
-        .background(Color(.systemGray5))
+        .background(Constant.background)
         .navigationTitle(text)
     }
 }

@@ -21,5 +21,6 @@ struct CalendarView: View {
                     .padding(.horizontal)
             }
         }
+        .background(Constant.background)
     }
 }
