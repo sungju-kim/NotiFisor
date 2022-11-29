@@ -52,11 +52,10 @@ struct NoticeEditView: View {
                 }
 
                 Section {
-                    HStack(alignment: .center) {
-                        TextField("목표치를 입력하세요", value: $amount, format: .number)
-                            .multilineTextAlignment(.center)
+                    HStack {
+                        TextField("목표를 입력하세요", value: $amount, format: .number)
+                            .multilineTextAlignment(.leading)
                             .keyboardType(.numbersAndPunctuation)
-                            .frame(maxWidth: 200)
                             .focused($checkoutInFocus, equals: .amount)
                             .submitLabel(.done)
 
@@ -65,8 +64,7 @@ struct NoticeEditView: View {
                                 Text($0.text)
                             }
                         }
-                        .labelsHidden()
-                        .pickerStyle(.segmented)
+                        .pickerStyle(.menu)
                     }
                 } header: {
                     SectionHeaderText(text: "목표 설정")

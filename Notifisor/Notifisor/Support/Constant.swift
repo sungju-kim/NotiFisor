@@ -10,5 +10,8 @@ import SwiftUI
 
 struct Constant {
     static let background = Color(.systemGray5)
-    static let pointColor = Color.yellow
+    static let pointColor = Color("pointColor")
+    static let textColor = Color("textColor")
 }
+
+

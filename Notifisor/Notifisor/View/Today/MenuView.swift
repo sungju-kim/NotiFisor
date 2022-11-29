@@ -17,7 +17,7 @@ struct MenuView: View {
             Text("Notifisor")
                 .fixedSize()
                 .font(.largeTitle.bold())
-                .foregroundColor(.white)
+                .foregroundColor(Constant.textColor)
                 .padding(.top, 30)
 
             Button {
@@ -30,8 +30,10 @@ struct MenuView: View {
             } label: {
                     Image(systemName: "calendar")
                         .imageScale(.large)
+                        .foregroundColor(Constant.textColor)
                     Text("Record feed")
                         .font(.headline)
+                        .foregroundColor(Constant.textColor)
             }
             .padding(.top, 100)
 
@@ -47,8 +49,10 @@ struct MenuView: View {
             } label: {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
+                        .foregroundColor(Constant.textColor)
                     Text("Profile")
                         .font(.headline)
+                        .foregroundColor(Constant.textColor)
             }
             .padding(.top, 30)
 
@@ -58,7 +62,7 @@ struct MenuView: View {
         .padding(.horizontal)
         .foregroundColor(.gray)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(red: 32/255, green: 32/255, blue: 32/255))
+        .background(Constant.pointColor)
         .edgesIgnoringSafeArea(.all)
     }
 }

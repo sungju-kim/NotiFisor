@@ -22,7 +22,6 @@ final class NotificationManager: ObservableObject {
     private init() {
         requestAuthrization()
         notiCenter.removeAllDeliveredNotifications()
-        notiCenter.removeAllPendingNotificationRequests()
     }
 
     func requestAuthrization() {
