@@ -17,9 +17,10 @@ final class NoticeRepository: ObservableObject {
     var day: Day?
     private init() {
         do {
+            Realm.Configuration.defaultConfiguration = NoticeRepository.migration()
             self.realm = try Realm()
-        } catch {
-            fatalError("DB Load Failure")
+        } catch(let error) {
+            fatalError(error.localizedDescription)
         }
 
         self.weekday = get(Weekday.self, Date.now.get(.weekday))
@@ -88,5 +89,37 @@ final class NoticeRepository: ObservableObject {
                 realm.delete(current)
             }
         }
+    }
+    
+    static func migration() -> Realm.Configuration {
+        let schemaVersion = 1
+        
+        let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
+            if oldSchemaVersion < 1 {
+                migration.enumerateObjects(ofType: Day.className()) { oldObject, newObject in
+                    
+                    let oldNotice = oldObject!["notices"] as! RealmSwift.List<DynamicObject>
+                    let currnetNotice = newObject!["notices"] as! RealmSwift.List<MigrationObject>
+                    for notice in oldNotice {
+                        let current = migration.create(CurrentNotice.className(), value: [
+                            "rootId": notice._id,
+                            "title": notice.title,
+                            "amount": notice.amount,
+                            "unit": notice.unit,
+                            "noticeTime": notice.noticeTime,
+                            "repeats": notice.repeats,
+                            "isDone": false,
+                        ])
+                        currnetNotice.append(current)
+                    }
+                    
+                }
+            }
+        }
+        return Realm.Configuration(
+            schemaVersion: UInt64(schemaVersion),
+            migrationBlock: migrationBlock
+        )
+        
     }
 }
