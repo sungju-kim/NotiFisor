@@ -36,12 +36,8 @@ struct HistoryNoticeCell: View {
                 .font(.title)
                 .foregroundColor(isResolved ? .blue : .gray)
         }
-        .padding()
-        .background(.ultraThickMaterial)
         .background(isResolved ? Constant.pointColor : .white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(radius: 1, x: 5, y: 5)
-
+        .shadowCellStyle()
     }
 }
 
