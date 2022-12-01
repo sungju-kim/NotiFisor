@@ -14,6 +14,9 @@
 		0032952A28F98D3A002376DD /* SectionHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032952928F98D3A002376DD /* SectionHeaderText.swift */; };
 		0048C8E4292B42A400BB103D /* WholeNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0048C8E3292B42A400BB103D /* WholeNoticeCell.swift */; };
 		00979117291CF4EE0035A6CB /* NoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00979116291CF4EE0035A6CB /* NoticeRepository.swift */; };
+		0098890E2938CA5C00B96E7E /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098890D2938CA5C00B96E7E /* FlexibleView.swift */; };
+		009889102938CAA100B96E7E /* ShadowCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0098890F2938CAA100B96E7E /* ShadowCellStyle.swift */; };
+		009889122938D65A00B96E7E /* View + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009889112938D65A00B96E7E /* View + extension.swift */; };
 		00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */; };
 		00D9DB4428FD2B060030A2C7 /* WeekDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */; };
 		00F2B0B1291AB8E200176D8E /* OpaqueBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */; };
@@ -55,6 +58,9 @@
 		0032952928F98D3A002376DD /* SectionHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderText.swift; sourceTree = "<group>"; };
 		0048C8E3292B42A400BB103D /* WholeNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeNoticeCell.swift; sourceTree = "<group>"; };
 		00979116291CF4EE0035A6CB /* NoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRepository.swift; sourceTree = "<group>"; };
+		0098890D2938CA5C00B96E7E /* FlexibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
+		0098890F2938CAA100B96E7E /* ShadowCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowCellStyle.swift; sourceTree = "<group>"; };
+		009889112938D65A00B96E7E /* View + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + extension.swift"; sourceTree = "<group>"; };
 		00D17CB628F7ABB3007DEDC8 /* DailyNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNoticeView.swift; sourceTree = "<group>"; };
 		00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayView.swift; sourceTree = "<group>"; };
 		00F2B0B0291AB8E200176D8E /* OpaqueBlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpaqueBlackView.swift; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				0032952728F98554002376DD /* ColoredImage.swift */,
+				0098890F2938CAA100B96E7E /* ShadowCellStyle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 				6CA163E028F7A8B200E018F4 /* DayCell.swift */,
 				6CE5774C28F8376200A4CF7A /* CalendarView.swift */,
 				6CAA77AE290292A600649ECE /* MonthView.swift */,
+				0098890D2938CA5C00B96E7E /* FlexibleView.swift */,
 				00D9DB4328FD2B060030A2C7 /* WeekDayView.swift */,
 				6C2AA26B292B501600597432 /* CustomPicker.swift */,
 			);
@@ -249,6 +257,7 @@
 				6CE5774828F8010C00A4CF7A /* Date + extension.swift */,
 				6CE5775028F94E6300A4CF7A /* Calendar + extension.swift */,
 				6CE5775228F94EC900A4CF7A /* DateFormatter + extension.swift */,
+				009889112938D65A00B96E7E /* View + extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -344,7 +353,9 @@
 				6C62F87D293495A400D841FF /* Constant.swift in Sources */,
 				00D9DB4428FD2B060030A2C7 /* WeekDayView.swift in Sources */,
 				6CEEDDA2292F64170049E006 /* CurrentNotice.swift in Sources */,
+				009889102938CAA100B96E7E /* ShadowCellStyle.swift in Sources */,
 				00F2B0B1291AB8E200176D8E /* OpaqueBlackView.swift in Sources */,
+				0098890E2938CA5C00B96E7E /* FlexibleView.swift in Sources */,
 				00FDB86229260C1500766D1D /* EllipsisView.swift in Sources */,
 				00979117291CF4EE0035A6CB /* NoticeRepository.swift in Sources */,
 				00D17CB728F7ABB3007DEDC8 /* DailyNoticeView.swift in Sources */,
@@ -352,6 +363,7 @@
 				6C316A2228F6956D006A7473 /* ContentView.swift in Sources */,
 				0032950528F7EC53002376DD /* RepeatSectionCell.swift in Sources */,
 				6CE5774928F8010C00A4CF7A /* Date + extension.swift in Sources */,
+				009889122938D65A00B96E7E /* View + extension.swift in Sources */,
 				6CE5775128F94E6300A4CF7A /* Calendar + extension.swift in Sources */,
 				6CE5774B28F8020600A4CF7A /* HistoryNoticeCell.swift in Sources */,
 				6C6238F528FFDDC4000EF7FD /* NotificationManager.swift in Sources */,
