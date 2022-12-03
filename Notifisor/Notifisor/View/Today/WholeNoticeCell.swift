@@ -37,10 +37,7 @@ struct WholeNoticeCell: View {
                 .padding(.top, 4)
             }
         }
-        .padding()
-        .background(.ultraThickMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(radius: 1, x: 5, y: 5)
+        .shadowCellStyle()
         .sheet(isPresented: $isShowEditSheet) {
             NoticeEditView(notice)
         }

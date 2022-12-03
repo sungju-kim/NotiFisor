@@ -14,12 +14,19 @@ struct CalendarView: View {
     @State var isShowing: Bool = false
 
     var body: some View {
-        ScrollView {
+        let currentNotice = CurrentNotice()
+        currentNotice.title = "달리기"
+        currentNotice.repeats.append(objectsIn: [1,3,5])
+        currentNotice.unit = .km
+        currentNotice.amount = 3
+        
+        return ScrollView {
             VStack {
                 CustomPicker(date: $date, year: $year, month: $month, isShowing: $isShowing)
                 MonthView(date: $date)
-                    .padding(.horizontal)
+                FlexibleView(data: currentNotice)
             }
+            .padding(.horizontal)
         }
         .background(Constant.background)
     }
