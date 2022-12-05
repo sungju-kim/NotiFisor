@@ -142,13 +142,13 @@ struct NoticeEditView: View {
         //MARK: - 단발성 알림
         if selectedDays.isEmpty {
             notificationManager.createRequest("\(text) \(date)-\(0)",
-                                              body: "\(text) \(amount ?? 0)\(selectedUnit)",
+                                              body: "\(text) \(amount ?? 0)\(selectedUnit.text)",
                                               at: date)
         }
         //MARK: - 반복 알림
         selectedDays.forEach {
             notificationManager.createRequest("\(text) \(date)-\($0)",
-                                              body: "\(text) \(amount ?? 0)\(selectedUnit)",
+                                              body: "\(text) \(amount ?? 0)\(selectedUnit.text)",
                                               at: date, weekday: $0)
         }
     }
