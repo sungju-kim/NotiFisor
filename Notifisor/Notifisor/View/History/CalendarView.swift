@@ -30,9 +30,7 @@ struct CalendarView: View {
                 if let filtered = days.filter("date BETWEEN {%@, %@}", date.startOfMonth(), date.endOfMonth()),
                    let notices = filtered.reduce(into: [CurrentNotice]()) { $0 += $1.notices.filter { $0.isDone } },
                    let targets = getMost(notices: notices) {
-                    ForEach(targets.sorted(by: <), id: \.key) { notice, count in
-                        FlexibleView(data: notice, amount: count)
-                    }
+                       FlexibleView(data: targets)
                 }
             }
             .padding(.horizontal)
@@ -40,7 +38,7 @@ struct CalendarView: View {
         .background(Constant.background)
     }
 
-    func getMost(notices: [CurrentNotice]) -> [CurrentNotice: Double] {
+    private func getMost(notices: [CurrentNotice]) -> [CurrentNotice: Double] {
         var counter: [CurrentNotice: Double] = [:]
         notices.forEach { counter[$0, default: 0] += $0.amount ?? 0}
         let max = counter.values.max()
