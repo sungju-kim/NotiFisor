@@ -10,12 +10,9 @@ import SwiftUI
 struct FlexibleView: View {
     @State private var showDetail = false
     let data: CurrentNotice
+    let amount: Double
     private var textMessage: String {
-        "\(data.title)를 총 \(simpleAmount)\(data.unit.text) 했습니다."
-    }
-    
-    private var simpleAmount: Double {
-        (data.amount ?? 0) * Double(data.repeats.count)
+        "\(data.title)를 총 \(amount)\(data.unit.text) 했습니다."
     }
     
     var body: some View {
@@ -51,17 +48,5 @@ struct FlexibleView: View {
                 self.showDetail.toggle()
             }
         }
-    }
-}
-
-struct FlexibleView_Previews: PreviewProvider {
-    static var previews: some View {
-        let currentNotice = CurrentNotice()
-        currentNotice.title = "달리기"
-        currentNotice.repeats.append(objectsIn: [1,3,5])
-        currentNotice.unit = .km
-        currentNotice.amount = 3
-        
-        return FlexibleView(data: currentNotice)
     }
 }
