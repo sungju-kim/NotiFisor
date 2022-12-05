@@ -22,11 +22,13 @@ final class NoticeRepository: ObservableObject {
             fatalError("DB Load Failure")
         }
 
-        self.weekday = get(Weekday.self, Date.now.get(.weekday))
-        self.day = get(Day.self, Date.now.id)
+        self.weekday = get(Weekday.self, Date.kst.get(.weekday))
+        self.day = get(Day.self, Date.kst.id)
 
         if weekday == nil { createWeekDay() }
         if day == nil { createDay() }
+
+        searchDays(in: Date.kst)
     }
 
     private func createWeekDay() {
@@ -39,14 +41,14 @@ final class NoticeRepository: ObservableObject {
 
     private func createDay() {
         write {
-            let today = Date.now
+            let today = Date.kst
             let totalNotices = List<CurrentNotice>()
             weekday?.notices.forEach { totalNotices.append($0.toCurrent()) }
 
             realm.create(Day.self,
                          value: ["_id": today.id, "date": today, "notices": totalNotices],
                          update: .modified)
-            self.day = get(Day.self, Date.now.id)
+            self.day = get(Day.self, Date.kst.id)
         }
     }
 
@@ -63,7 +65,7 @@ final class NoticeRepository: ObservableObject {
         write {
             notice.repeats.forEach { get(Weekday.self, $0)?.notices.append(notice) }
 
-            if notice.repeats.contains(Date.now.get(.weekday)) || notice.repeats.isEmpty {
+            if notice.repeats.contains(Date.kst.get(.weekday)) || notice.repeats.isEmpty {
                 day?.notices.append(notice.toCurrent())
             }
         }

@@ -8,9 +8,9 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.calendar) var calendar: Calendar
-    @State var date: Date = .now
-    @State var year: Int = Date.now.get(.year)
-    @State var month: Int = Date.now.get(.month)
+    @State var date: Date = .kst
+    @State var year: Int = Date.kst.get(.year)
+    @State var month: Int = Date.kst.get(.month)
     @State var isShowing: Bool = false
 
     var body: some View {
