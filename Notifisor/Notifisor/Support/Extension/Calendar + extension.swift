@@ -28,7 +28,7 @@ extension Calendar {
 
     static func generateMonthDate(_ date: Date) -> Date {
         let components = Calendar.current.dateComponents([.year, .month], from: date)
-        return Calendar.current.date(from: components) ?? Date.now
+        return Calendar.current.date(from: components) ?? Date.kst
     }
 
     func generateMonthDate(_ year: Int, _ month: Int) -> Date {
