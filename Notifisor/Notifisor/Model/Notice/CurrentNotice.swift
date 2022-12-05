@@ -16,3 +16,9 @@ final class CurrentNotice: NoticeType {
         return rootId
     }
 }
+
+extension CurrentNotice: Comparable {
+    static func < (lhs: CurrentNotice, rhs: CurrentNotice) -> Bool {
+        return lhs.title < rhs.title
+    }
+}
