@@ -9,12 +9,8 @@ import SwiftUI
 
 struct FlexibleView: View {
     @State private var showDetail = false
-    let data: CurrentNotice
-    let amount: Double
-    private var textMessage: String {
-        "\(data.title)를 총 \(amount)\(data.unit.text) 했습니다."
-    }
-    
+    let data: [CurrentNotice: Double]
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -38,8 +34,10 @@ struct FlexibleView: View {
             }
             
             if showDetail {
-                Text(textMessage)
-                    .padding(.top, 30)
+                ForEach(data.sorted(by: <), id: \.key) {
+                    Text("\($0.title)를 총 \(String(format: "%.1f", $1))\($0.unit.text) 했습니다.")
+                        .padding(.top, 30)
+                }
             }
         }
         .shadowCellStyle()
