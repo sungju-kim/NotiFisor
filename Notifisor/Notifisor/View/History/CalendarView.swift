@@ -39,10 +39,23 @@ struct CalendarView: View {
     }
 
     private func getMost(notices: [CurrentNotice]) -> [CurrentNotice: Double] {
-        var counter: [CurrentNotice: Double] = [:]
-        notices.forEach { counter[$0, default: 0] += $0.amount ?? 0}
+        var idMap: [ObjectId: CurrentNotice] = [:]
+        var amount: [ObjectId: Double] = [:]
+        var counter: [ObjectId: Int] = [:]
+
+        notices.forEach {
+            idMap[$0.targetId] = $0
+            amount[$0.targetId, default: 0] += $0.amount ?? 0
+            counter[$0.targetId, default: 0] += 1
+        }
         let max = counter.values.max()
 
-        return counter.filter { $0.value == max }
+        var result: [CurrentNotice: Double] = [:]
+
+        amount.filter { key, _ in counter[key] == max }.forEach { id, value in
+            result[idMap[id, default: .init()]] = value
+        }
+        
+        return result
     }
 }
