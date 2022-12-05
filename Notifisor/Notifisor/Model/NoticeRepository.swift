@@ -27,8 +27,6 @@ final class NoticeRepository: ObservableObject {
 
         if weekday == nil { createWeekDay() }
         if day == nil { createDay() }
-
-        searchDays(in: Date.kst)
     }
 
     private func createWeekDay() {

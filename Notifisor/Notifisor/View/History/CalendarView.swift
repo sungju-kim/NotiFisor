@@ -5,6 +5,7 @@
 //  Created by dale on 2022/10/13.
 //
 import SwiftUI
+import RealmSwift
 
 struct CalendarView: View {
     @Environment(\.calendar) var calendar: Calendar
@@ -12,6 +13,8 @@ struct CalendarView: View {
     @State var year: Int = Date.kst.get(.year)
     @State var month: Int = Date.kst.get(.month)
     @State var isShowing: Bool = false
+
+    @ObservedResults(Day.self) var days
 
     var body: some View {
         let currentNotice = CurrentNotice()
@@ -24,10 +27,24 @@ struct CalendarView: View {
             VStack {
                 CustomPicker(date: $date, year: $year, month: $month, isShowing: $isShowing)
                 MonthView(date: $date)
-                FlexibleView(data: currentNotice)
+                if let filtered = days.filter("date BETWEEN {%@, %@}", date.startOfMonth(), date.endOfMonth()),
+                   let notices = filtered.reduce(into: [CurrentNotice]()) { $0 += $1.notices.filter { $0.isDone } },
+                   let targets = getMost(notices: notices) {
+                    ForEach(targets.sorted(by: <), id: \.key) { notice, count in
+                        FlexibleView(data: notice, amount: count)
+                    }
+                }
             }
             .padding(.horizontal)
         }
         .background(Constant.background)
+    }
+
+    func getMost(notices: [CurrentNotice]) -> [CurrentNotice: Double] {
+        var counter: [CurrentNotice: Double] = [:]
+        notices.forEach { counter[$0, default: 0] += $0.amount ?? 0}
+        let max = counter.values.max()
+
+        return counter.filter { $0.value == max }
     }
 }
