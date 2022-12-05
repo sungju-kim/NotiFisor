@@ -18,6 +18,6 @@ struct SectionHeaderText: View {
 
 struct SectionHeaderText_Previews: PreviewProvider {
     static var previews: some View {
-        SectionHeaderText(text: "김호찌")
+        SectionHeaderText(text: "test")
     }
 }
