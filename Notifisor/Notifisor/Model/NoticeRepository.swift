@@ -22,6 +22,10 @@ final class NoticeRepository: ObservableObject {
             fatalError("DB Load Failure")
         }
 
+        refresh()
+    }
+
+    func refresh() {
         self.weekday = get(Weekday.self, Date.kst.get(.weekday))
         self.day = get(Day.self, Date.kst.id)
 
