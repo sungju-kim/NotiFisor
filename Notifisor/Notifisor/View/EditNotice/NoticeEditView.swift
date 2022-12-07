@@ -64,6 +64,7 @@ struct NoticeEditView: View {
                                 Text($0.text)
                             }
                         }
+                        .labelsHidden()
                         .pickerStyle(.menu)
                     }
                 } header: {

@@ -29,13 +29,13 @@ struct ContentView: View {
                                 day: day
                 )
                 .frame(width: geometry.size.width, height: geometry.size.height)
-                .offset(x: showMenu ? geometry.size.width/2 : 0)
+                .offset(x: showMenu ? geometry.size.width * 0.75 : 0)
                 if showMenu {
                     MenuView(showHistory: $showHistory,
                              showProfile: $showProfile,
                              showMenu: $showMenu
                     )
-                    .frame(width: geometry.size.width/2)
+                    .frame(width: geometry.size.width * 0.75)
                     .transition(.move(edge: .leading))
                 }
             }
