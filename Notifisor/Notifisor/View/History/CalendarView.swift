@@ -17,12 +17,6 @@ struct CalendarView: View {
     @ObservedResults(Day.self) var days
 
     var body: some View {
-        let currentNotice = CurrentNotice()
-        currentNotice.title = "달리기"
-        currentNotice.repeats.append(objectsIn: [1,3,5])
-        currentNotice.unit = .km
-        currentNotice.amount = 3
-        
         return ScrollView {
             VStack {
                 CustomPicker(date: $date, year: $year, month: $month, isShowing: $isShowing)
@@ -55,7 +49,7 @@ struct CalendarView: View {
         amount.filter { key, _ in counter[key] == max }.forEach { id, value in
             result[idMap[id, default: .init()]] = value
         }
-        
+
         return result
     }
 }
