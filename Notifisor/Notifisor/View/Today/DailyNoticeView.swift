@@ -35,11 +35,6 @@ struct DailyNoticeView: View {
             .tabViewStyle(PageTabViewStyle())
 
             .frame(maxWidth: .infinity)
-            .overlay {
-                if showMenu {
-                    OpaqueBlackView(showMenu: $showMenu)
-                }
-            }
             .background(Constant.background)
             .overlay {
                 NavigationLink(destination: CalendarView(), isActive: $showHistory) { EmptyView() }
@@ -66,6 +61,7 @@ struct DailyNoticeView: View {
                         }
                     } label: {
                         ColoredImage(source: "list.bullet")
+                            .opacity(showMenu ? 0 : 1)
                     }
                 }
             }

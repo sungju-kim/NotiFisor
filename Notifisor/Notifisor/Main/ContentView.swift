@@ -30,6 +30,12 @@ struct ContentView: View {
                 )
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .offset(x: showMenu ? geometry.size.width * 0.75 : 0)
+
+                OpaqueBlackView(showMenu: $showMenu)
+                    .opacity(showMenu ? 1 : 0)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .offset(x: showMenu ? geometry.size.width * 0.75 : 0)
+
                 if showMenu {
                     MenuView(showHistory: $showHistory,
                              showProfile: $showProfile,
