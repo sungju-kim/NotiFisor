@@ -14,7 +14,7 @@ final class NoticeRepository: ObservableObject {
     private let realm: Realm
 
     private var weekday: Weekday?
-    var day: Day?
+    private(set) var day: Day?
     private init() {
         do {
             self.realm = try Realm()
@@ -30,7 +30,7 @@ final class NoticeRepository: ObservableObject {
         self.day = get(Day.self, Date.now.id)
 
         if weekday == nil { createWeekDay() }
-        if day == nil { createDay() }
+        if day == nil { createDay(weekday: self.weekday) }
     }
 
     private func createWeekDay() {
@@ -41,19 +41,23 @@ final class NoticeRepository: ObservableObject {
         }
     }
 
-    private func createDay() {
+    private func createDay(date: Date = Date.now, weekday: Weekday? = nil) {
         write {
-            let today = Date.now
             let totalNotices = List<CurrentNotice>()
             weekday?.notices.forEach { totalNotices.append($0.toCurrent()) }
 
             realm.create(Day.self,
-                         value: ["_id": today.id, "date": today, "notices": totalNotices],
+                         value: ["_id": date.id, "date": date, "notices": totalNotices],
                          update: .modified)
             self.day = get(Day.self, Date.now.id)
         }
     }
 
+    func createDay(from startDate: Date, to endDate: Date) {
+        stride(from: startDate.addingTimeInterval(86400), to: endDate, by: 86400).forEach {
+            createDay(date: $0, weekday: get(Weekday.self, $0.get(.weekday)))
+        }
+    }
 
     func write(_ completion: () -> Void) {
         do {
@@ -92,5 +96,15 @@ final class NoticeRepository: ObservableObject {
                 realm.delete(current)
             }
         }
+    }
+}
+
+extension Date: Strideable {
+    public func distance(to other: Date) -> TimeInterval {
+        return other.timeIntervalSinceReferenceDate - self.timeIntervalSinceReferenceDate
+    }
+
+    public func advanced(by n: TimeInterval) -> Date {
+        return self + n
     }
 }

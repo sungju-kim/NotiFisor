@@ -19,6 +19,12 @@ struct NotifisorApp: App {
                 .environmentObject(notificationManager)
                 .environmentObject(notificationRepository)
                 .onChange(of: scenePhase) { if $0 == .active { notificationRepository.refresh() } }
+                .onAppear {
+                    if let lastLogin = UserDefaults.standard.object(forKey: "lastLogin") as? Date {
+                        notificationRepository.createDay(from: lastLogin, to: Date.now)
+                    }
+                    UserDefaults.standard.set(Date.now, forKey: "lastLogin")
+                }
         }
     }
 }
