@@ -40,6 +40,7 @@ struct FlexibleView: View {
                 }
             }
         }
+        .padding()
         .shadowCellStyle()
         .onTapGesture {
             withAnimation {

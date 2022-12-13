@@ -52,6 +52,7 @@ struct DailyNoticeCell: View {
             .foregroundStyle(.secondary)
             .padding(.top, 4)
         }
+        .padding()
         .shadowCellStyle()
         .sheet(isPresented: $isShowEditSheet) {
             NoticeEditView(notice)

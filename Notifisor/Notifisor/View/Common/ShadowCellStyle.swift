@@ -10,7 +10,6 @@ import SwiftUI
 struct ShadowCell: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding()
             .background(.ultraThickMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(radius: 1, x: 5, y: 5)

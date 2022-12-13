@@ -29,13 +29,11 @@ struct HistoryNoticeCell: View {
         HStack {
             Text("\(title)")
                 .font(.title)
+                .foregroundColor(isResolved ? Constant.textColor : .black)
 
             Spacer()
-
-            Text("\(resolvedTime)")
-                .font(.title)
-                .foregroundColor(isResolved ? .blue : .gray)
         }
+        .padding()
         .background(isResolved ? Constant.pointColor : .white)
         .shadowCellStyle()
     }
