@@ -14,13 +14,6 @@ struct HistoryNoticeCell: View {
         return notice.title
     }
 
-    //TODO: - 완료시각으로 변경 필요
-    var resolvedTime: String {
-        let hour = notice.noticeTime.get(.hour)
-        let minute = notice.noticeTime.get(.minute)
-        return "\(hour) : \(minute)"
-    }
-
     var isResolved: Bool {
         return notice.isDone
     }
@@ -29,13 +22,12 @@ struct HistoryNoticeCell: View {
         HStack {
             Text("\(title)")
                 .font(.title)
-                .foregroundColor(isResolved ? Constant.textColor : .black)
+                .foregroundColor(isResolved ? Constant.textColor : Constant.reverseTextColor)
 
             Spacer()
         }
         .padding()
-        .background(isResolved ? Constant.pointColor : .white)
+        .background(isResolved ? Constant.pointColor : Constant.background)
         .shadowCellStyle()
     }
 }
-

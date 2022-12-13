@@ -37,6 +37,7 @@ struct WholeNoticeCell: View {
                 .padding(.top, 4)
             }
         }
+        .padding()
         .shadowCellStyle()
         .sheet(isPresented: $isShowEditSheet) {
             NoticeEditView(notice)
