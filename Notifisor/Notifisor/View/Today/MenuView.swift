@@ -13,12 +13,11 @@ struct MenuView: View {
     @Binding var showMenu: Bool
     let pageDelay = 0.5
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 32) {
             Text("Notifisor")
                 .fixedSize()
                 .font(.largeTitle.bold())
                 .foregroundColor(Constant.textColor)
-                .padding(.top, 30)
 
             Button {
                 withAnimation {
@@ -31,11 +30,10 @@ struct MenuView: View {
                     Image(systemName: "calendar")
                         .imageScale(.large)
                         .foregroundColor(Constant.textColor)
-                    Text("Record feed")
+                    Text("전체 기록")
                         .font(.headline)
                         .foregroundColor(Constant.textColor)
             }
-            .padding(.top, 100)
 
             Button {
                 withAnimation {
@@ -50,19 +48,16 @@ struct MenuView: View {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
                         .foregroundColor(Constant.textColor)
-                    Text("Profile")
+                    Text("프로필")
                         .font(.headline)
                         .foregroundColor(Constant.textColor)
             }
-            .padding(.top, 30)
 
             Spacer()
         }
-        .padding(.vertical, 20)
         .padding(.horizontal)
         .foregroundColor(.gray)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Constant.pointColor)
-        .edgesIgnoringSafeArea(.all)
     }
 }
