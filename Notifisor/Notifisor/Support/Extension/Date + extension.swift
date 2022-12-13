@@ -8,14 +8,6 @@
 import Foundation
 
 extension Date {
-    var kst: Date {
-        return self.addingTimeInterval(32400)
-    }
-
-    static var kst: Date {
-        return Date.now.addingTimeInterval(32400)
-    }
-
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)
     }
@@ -29,15 +21,17 @@ extension Date {
     }
 
     func startOfMonth() -> Date {
-        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date.kst
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self))) ?? Date.now
     }
 
     func endOfMonth() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth()) ?? Date.kst
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth()) ?? Date.now
     }
 
     var id: String {
         let formatter = DateFormatter()
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.locale = .autoupdatingCurrent
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: self)
     }

@@ -15,7 +15,7 @@ struct OpaqueBlackView: View {
             HStack {
                 Image(systemName: "xmark")
                     .resizable()
-                    .foregroundColor(Constant.textColor)
+                    .foregroundColor(Constant.pointColor)
                     .frame(width: 25, height: 25)
                 Spacer()
             }

@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomPicker: View {
     let months: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     let startYear: Int = 2000
-    let endYear: Int = Date.kst.get(.year)
+    let endYear: Int = Date.now.get(.year)
 
     @Binding var date: Date
     @Binding var year: Int
