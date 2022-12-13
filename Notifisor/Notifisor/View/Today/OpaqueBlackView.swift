@@ -11,17 +11,26 @@ struct OpaqueBlackView: View {
     @Binding var showMenu: Bool
 
     var body: some View {
-        let tap = TapGesture()
-            .onEnded { tap in
-                withAnimation {
-                    showMenu.toggle()
-                }
+        VStack {
+            HStack {
+                Image(systemName: "xmark")
+                    .resizable()
+                    .foregroundColor(Constant.textColor)
+                    .frame(width: 25, height: 25)
+                Spacer()
             }
-
-        return Color.black.opacity(0.5)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .ignoresSafeArea()
-            .gesture(tap)
+            .padding(.vertical, 64)
+            .padding(.horizontal, 32)
+            Spacer()
+        }
+        .background(.black.opacity(0.5))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea()
+        .onTapGesture {
+            withAnimation {
+                showMenu.toggle()
+            }
+        }
     }
 }
 
